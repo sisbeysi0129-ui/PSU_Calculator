@@ -67,6 +67,28 @@
             font-weight: 800;
         }
 
+        .hero-side {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-select {
+            height: 34px;
+            width: auto;
+            padding: 0 9px;
+            border: 1px solid rgba(255,255,255,.42);
+            border-radius: 999px;
+            background: rgba(15, 23, 42, .24);
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .language-select option {
+            color: #111827;
+        }
+
         .subtitle {
             margin-top: 8px;
             color: #64748b;
@@ -750,7 +772,13 @@
                 내 PC 구성에 맞는 안정적인 파워 용량을 빠르게 확인하세요.
             </div>
         </div>
-        <div class="hero-badge">소켓 호환 · 25% 여유 반영</div>
+        <div class="hero-side">
+            <div class="hero-badge">소켓 호환 · 25% 여유 반영</div>
+            <select id="language-select" class="language-select" aria-label="언어 선택">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+            </select>
+        </div>
     </div>
 
     <hr>
@@ -3705,6 +3733,132 @@ function resetCalculator() {
         error.remove();
     }
 
+}
+
+/* =========================================================
+   언어 전환
+========================================================= */
+
+const languageStorageKey = "psu-calculator-language";
+const translations = {
+    "내 PC 구성에 맞는 안정적인 파워 용량을 빠르게 확인하세요.": "Quickly find a reliable PSU wattage for your PC build.",
+    "소켓 호환 · 25% 여유 반영": "Socket compatibility · 25% headroom",
+    "PC 구성": "PC Build",
+    "🛠️ 기본 부품": "🛠️ Core Components",
+    "제조사": "Brand",
+    "제조사 전체": "All brands",
+    "세대": "Generation",
+    "세대 전체": "All generations",
+    "등급": "Tier",
+    "등급 전체": "All tiers",
+    "계열": "Family",
+    "계열 전체": "All families",
+    "소켓": "Socket",
+    "소켓 전체": "All sockets",
+    "칩셋": "Chipset",
+    "칩셋 전체": "All chipsets",
+    "CPU를 선택해주세요.": "Select a CPU.",
+    "GPU를 선택해주세요.": "Select a GPU.",
+    "메인보드를 선택해주세요.": "Select a motherboard.",
+    "🧠 RAM": "🧠 Memory (RAM)",
+    "💾 저장장치": "💾 Storage",
+    "❄️ 쿨링": "❄️ Cooling",
+    "전체 제조사": "All brands",
+    "닫기 −": "Close −",
+    "더보기 +": "More +",
+    "가나다순 ↑": "Sort A–Z ↑",
+    "가나다순 ↓": "Sort A–Z ↓",
+    "RAM을 선택하세요": "Select RAM",
+    "제조사를 먼저 선택해주세요": "Select a brand first",
+    "NVMe SSD 선택하지 않음": "No NVMe SSD",
+    "SATA SSD 선택하지 않음": "No SATA SSD",
+    "HDD 선택하지 않음": "No HDD",
+    "CPU 쿨러": "CPU Cooler",
+    "시스템 팬": "System Fans",
+    "⚡ 전력 계산": "⚡ Calculate Power",
+    "↻ 초기화": "↻ Reset",
+    "💾 구성 저장": "💾 Save Build",
+    "📂 저장 구성 불러오기": "📂 Load Build",
+    "📋 구성 복사": "📋 Copy Build",
+    "📋 선택한 PC": "📋 Selected PC",
+    "⚡ 전력 분석": "⚡ Power Analysis",
+    "예상 최대 소비전력:": "Estimated peak power:",
+    "25% 여유 적용:": "With 25% headroom:",
+    "🔌 PSU 권장 용량": "🔌 Recommended PSU",
+    "최소 권장": "Minimum",
+    "⭐ 추천": "⭐ Recommended",
+    "여유 있게": "Extra headroom",
+    "현재 구성에 필요한\n                        최소 권장 용량": "Minimum for this build",
+    "적당한 여유를 가진\n                        권장 용량": "Balanced recommendation",
+    "향후 업그레이드까지\n                        고려": "For future upgrades"
+};
+
+const placeholderTranslations = {
+    "🔍 CPU 모델명, 제조사 검색": "🔍 Search CPU model or brand",
+    "🔍 GPU 모델명, 제조사 검색": "🔍 Search GPU model or brand",
+    "🔍 메인보드 모델명, 제조사, 칩셋 검색": "🔍 Search motherboard, brand, or chipset"
+};
+
+const originalTextNodes = new WeakMap();
+
+function applyLanguageToNode(node, language) {
+    if (node.nodeType !== Node.TEXT_NODE || !node.parentElement) return;
+    if (["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) return;
+
+    const original = originalTextNodes.get(node) ?? node.nodeValue;
+    originalTextNodes.set(node, original);
+    const trimmed = original.trim();
+    const translated = language === "en" ? translations[trimmed] : trimmed;
+
+    const nextValue = translated && translated !== trimmed
+        ? original.replace(trimmed, translated)
+        : original;
+
+    if (node.nodeValue !== nextValue) node.nodeValue = nextValue;
+}
+
+function applyLanguage(language) {
+    document.documentElement.lang = language;
+    document.querySelectorAll("input[placeholder]").forEach(input => {
+        const original = input.dataset.originalPlaceholder || input.placeholder;
+        input.dataset.originalPlaceholder = original;
+        input.placeholder = language === "en"
+            ? (placeholderTranslations[original] || original)
+            : original;
+    });
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) applyLanguageToNode(node, language);
+}
+
+const languageSelect = document.getElementById("language-select");
+if (languageSelect) {
+    const savedLanguage = localStorage.getItem(languageStorageKey) || "ko";
+    languageSelect.value = savedLanguage;
+    applyLanguage(savedLanguage);
+
+    languageSelect.addEventListener("change", function() {
+        localStorage.setItem(languageStorageKey, languageSelect.value);
+        applyLanguage(languageSelect.value);
+    });
+
+    const languageObserver = new MutationObserver(records => {
+        if (languageSelect.value !== "en") return;
+        records.forEach(record => {
+            record.addedNodes.forEach(addedNode => {
+                if (addedNode.nodeType === Node.TEXT_NODE) {
+                    applyLanguageToNode(addedNode, "en");
+                } else if (addedNode.nodeType === Node.ELEMENT_NODE) {
+                    const walker = document.createTreeWalker(addedNode, NodeFilter.SHOW_TEXT);
+                    let textNode;
+                    while ((textNode = walker.nextNode())) applyLanguageToNode(textNode, "en");
+                }
+            });
+        });
+    });
+
+    languageObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 </script>
