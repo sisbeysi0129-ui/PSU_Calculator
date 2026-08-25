@@ -1475,10 +1475,12 @@
         <div class="recommendation-banner">
             <div>
                 <div class="recommendation-kicker">이 구성에 가장 무난한 선택</div>
-                <div class="recommendation-title">정격 {{ result.recommended_psu }}W 파워를 추천합니다</div>
+                <div class="recommendation-title">
+                    <span>정격</span> {{ result.recommended_psu }}W <span>파워를 추천합니다</span>
+                </div>
                 <p class="recommendation-note">
-                    예상 최대 소비전력 {{ result.total_power }}W에 25% 여유를 반영한 뒤,
-                    업그레이드 여유까지 고려한 권장 용량입니다.
+                    <span>예상 최대 소비전력:</span> {{ result.total_power }}W
+                    <span>에 25% 여유를 반영한 뒤, 업그레이드 여유까지 고려한 권장 용량입니다.</span>
                 </p>
             </div>
             <div class="recommendation-watt">{{ result.recommended_psu }} W</div>
@@ -3805,6 +3807,10 @@ const translations = {
     "💾 구성 저장": "💾 Save Build",
     "📂 저장 구성 불러오기": "📂 Load Build",
     "📋 구성 복사": "📋 Copy Build",
+    "이 구성에 가장 무난한 선택": "Best choice for this build",
+    "정격": "Recommended",
+    "파워를 추천합니다": "PSU",
+    "에 25% 여유를 반영한 뒤, 업그레이드 여유까지 고려한 권장 용량입니다.": " after adding 25% headroom, with room for future upgrades.",
     "📋 선택한 PC": "📋 Selected PC",
     "⚡ 전력 분석": "⚡ Power Analysis",
     "예상 최대 소비전력:": "Estimated peak power:",
