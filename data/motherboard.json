@@ -1,0 +1,392 @@
+[
+    {
+        "id": "asus_b650_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING B650-PLUS",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asus_b650e_f",
+        "manufacturer": "ASUS",
+        "model": "ROG STRIX B650E-F GAMING WIFI",
+        "socket": "AM5",
+        "chipset": "B650E",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "asus_x670e_hero",
+        "manufacturer": "ASUS",
+        "model": "ROG CROSSHAIR X670E HERO",
+        "socket": "AM5",
+        "chipset": "X670E",
+        "form_factor": "ATX",
+        "power": 60
+    },
+    {
+        "id": "asus_x870_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING X870-PLUS WIFI",
+        "socket": "AM5",
+        "chipset": "X870",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "asus_x870e_hero",
+        "manufacturer": "ASUS",
+        "model": "ROG CROSSHAIR X870E HERO",
+        "socket": "AM5",
+        "chipset": "X870E",
+        "form_factor": "ATX",
+        "power": 65
+    },
+    {
+        "id": "msi_b650_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG B650 TOMAHAWK WIFI",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "msi_b650m_mortar",
+        "manufacturer": "MSI",
+        "model": "MAG B650M MORTAR WIFI",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "mATX",
+        "power": 50
+    },
+    {
+        "id": "msi_x670e_carbon",
+        "manufacturer": "MSI",
+        "model": "MPG X670E CARBON WIFI",
+        "socket": "AM5",
+        "chipset": "X670E",
+        "form_factor": "ATX",
+        "power": 60
+    },
+    {
+        "id": "msi_x870_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG X870 TOMAHAWK WIFI",
+        "socket": "AM5",
+        "chipset": "X870",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "gigabyte_b650_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "B650 AORUS ELITE AX",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "gigabyte_b650m_ds3h",
+        "manufacturer": "GIGABYTE",
+        "model": "B650M DS3H",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "mATX",
+        "power": 45
+    },
+    {
+        "id": "gigabyte_x670e_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "X670E AORUS MASTER",
+        "socket": "AM5",
+        "chipset": "X670E",
+        "form_factor": "ATX",
+        "power": 60
+    },
+    {
+        "id": "asrock_b650_pro",
+        "manufacturer": "ASRock",
+        "model": "B650 PRO RS",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asrock_b650m_hdvm2",
+        "manufacturer": "ASRock",
+        "model": "B650M-HDV/M.2",
+        "socket": "AM5",
+        "chipset": "B650",
+        "form_factor": "mATX",
+        "power": 45
+    },
+    {
+        "id": "asrock_x870e_nova",
+        "manufacturer": "ASRock",
+        "model": "X870E NOVA WIFI",
+        "socket": "AM5",
+        "chipset": "X870E",
+        "form_factor": "ATX",
+        "power": 60
+    },
+
+    {
+        "id": "asus_z790_hero",
+        "manufacturer": "ASUS",
+        "model": "ROG MAXIMUS Z790 HERO",
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "form_factor": "ATX",
+        "power": 60
+    },
+    {
+        "id": "asus_z790_f",
+        "manufacturer": "ASUS",
+        "model": "ROG STRIX Z790-F GAMING WIFI",
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "asus_b760_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING B760-PLUS WIFI",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asus_b760m_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING B760M-PLUS WIFI",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "mATX",
+        "power": 48
+    },
+    {
+        "id": "msi_z790_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG Z790 TOMAHAWK WIFI",
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "msi_b760_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG B760 TOMAHAWK WIFI",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "msi_b760m_mortar",
+        "manufacturer": "MSI",
+        "model": "MAG B760M MORTAR WIFI",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "mATX",
+        "power": 48
+    },
+    {
+        "id": "gigabyte_z790_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "Z790 AORUS ELITE AX",
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "gigabyte_b760_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "B760 AORUS ELITE AX",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asrock_z790_pro",
+        "manufacturer": "ASRock",
+        "model": "Z790 PRO RS",
+        "socket": "LGA1700",
+        "chipset": "Z790",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asrock_b760m_pro",
+        "manufacturer": "ASRock",
+        "model": "B760M PRO RS",
+        "socket": "LGA1700",
+        "chipset": "B760",
+        "form_factor": "mATX",
+        "power": 45
+    },
+
+    {
+        "id": "asus_b550_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING B550-PLUS",
+        "socket": "AM4",
+        "chipset": "B550",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "msi_b550_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG B550 TOMAHAWK",
+        "socket": "AM4",
+        "chipset": "B550",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "gigabyte_b550_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "B550 AORUS ELITE V2",
+        "socket": "AM4",
+        "chipset": "B550",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "asrock_b550_pro",
+        "manufacturer": "ASRock",
+        "model": "B550 PRO4",
+        "socket": "AM4",
+        "chipset": "B550",
+        "form_factor": "ATX",
+        "power": 48
+    },
+
+    {
+        "id": "asus_z690_hero",
+        "manufacturer": "ASUS",
+        "model": "ROG MAXIMUS Z690 HERO",
+        "socket": "LGA1700",
+        "chipset": "Z690",
+        "form_factor": "ATX",
+        "power": 60
+    },
+    {
+        "id": "msi_z690_carbon",
+        "manufacturer": "MSI",
+        "model": "MPG Z690 CARBON WIFI",
+        "socket": "LGA1700",
+        "chipset": "Z690",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "asus_tuf_z490_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING Z490-PLUS",
+        "socket": "LGA1200",
+        "chipset": "Z490",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "msi_z490_tomahawk",
+        "manufacturer": "MSI",
+        "model": "MAG Z490 TOMAHAWK",
+        "socket": "LGA1200",
+        "chipset": "Z490",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "gigabyte_b560m_aorus",
+        "manufacturer": "GIGABYTE",
+        "model": "B560M AORUS PRO",
+        "socket": "LGA1200",
+        "chipset": "B560",
+        "form_factor": "mATX",
+        "power": 45
+    },
+    {
+        "id": "asus_p7p55d_e_pro",
+        "manufacturer": "ASUS",
+        "model": "P7P55D-E PRO",
+        "socket": "LGA1156",
+        "chipset": "P55",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "asus_p8z68_v_pro",
+        "manufacturer": "ASUS",
+        "model": "P8Z68-V PRO",
+        "socket": "LGA1155",
+        "chipset": "Z68",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "gigabyte_z77x_ud3h",
+        "manufacturer": "GIGABYTE",
+        "model": "GA-Z77X-UD3H",
+        "socket": "LGA1155",
+        "chipset": "Z77",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "asus_z97_a",
+        "manufacturer": "ASUS",
+        "model": "Z97-A",
+        "socket": "LGA1150",
+        "chipset": "Z97",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "asus_z170_pro_gaming",
+        "manufacturer": "ASUS",
+        "model": "Z170 PRO GAMING",
+        "socket": "LGA1151",
+        "chipset": "Z170",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "asus_prime_z270_a",
+        "manufacturer": "ASUS",
+        "model": "PRIME Z270-A",
+        "socket": "LGA1151",
+        "chipset": "Z270",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "asus_rog_strix_z370_f",
+        "manufacturer": "ASUS",
+        "model": "ROG STRIX Z370-F GAMING",
+        "socket": "LGA1151-v2",
+        "chipset": "Z370",
+        "form_factor": "ATX",
+        "power": 50
+    },
+    {
+        "id": "msi_z390_a_pro",
+        "manufacturer": "MSI",
+        "model": "Z390-A PRO",
+        "socket": "LGA1151-v2",
+        "chipset": "Z390",
+        "form_factor": "ATX",
+        "power": 45
+    }
+]

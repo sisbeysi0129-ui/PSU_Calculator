@@ -1,0 +1,344 @@
+[
+    {
+        "id": "nvidia_rtx5090",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5090",
+        "max_power": 575
+    },
+    {
+        "id": "nvidia_rtx5080",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5080",
+        "max_power": 360
+    },
+    {
+        "id": "nvidia_rtx5070ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5070 Ti",
+        "max_power": 300
+    },
+    {
+        "id": "nvidia_rtx5070",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5070",
+        "max_power": 250
+    },
+    {
+        "id": "nvidia_rtx5060ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5060 Ti",
+        "max_power": 180
+    },
+    {
+        "id": "nvidia_rtx5060",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 5060",
+        "max_power": 145
+    },
+    {
+        "id": "nvidia_rtx4090",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4090",
+        "max_power": 450
+    },
+    {
+        "id": "nvidia_rtx4080super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4080 SUPER",
+        "max_power": 320
+    },
+    {
+        "id": "nvidia_rtx4070tisuper",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4070 Ti SUPER",
+        "max_power": 285
+    },
+    {
+        "id": "nvidia_rtx4070super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4070 SUPER",
+        "max_power": 220
+    },
+    {
+        "id": "nvidia_rtx4070",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4070",
+        "max_power": 200
+    },
+    {
+        "id": "nvidia_rtx4060ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4060 Ti",
+        "max_power": 160
+    },
+    {
+        "id": "nvidia_rtx4060",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4060",
+        "max_power": 115
+    },
+    {
+        "id": "nvidia_rtx3090ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3090 Ti",
+        "max_power": 450
+    },
+    {
+        "id": "nvidia_rtx3090",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3090",
+        "max_power": 350
+    },
+    {
+        "id": "nvidia_rtx3080ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3080 Ti",
+        "max_power": 350
+    },
+    {
+        "id": "nvidia_rtx3080",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3080",
+        "max_power": 320
+    },
+    {
+        "id": "nvidia_rtx3070ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3070 Ti",
+        "max_power": 290
+    },
+    {
+        "id": "nvidia_rtx3070",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3070",
+        "max_power": 220
+    },
+    {
+        "id": "nvidia_rtx3060ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3060 Ti",
+        "max_power": 200
+    },
+    {
+        "id": "nvidia_rtx3060",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3060",
+        "max_power": 170
+    },
+    {
+        "id": "nvidia_rtx3050",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 3050",
+        "max_power": 130
+    },
+    {
+        "id": "amd_rx9070xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 9070 XT",
+        "max_power": 304
+    },
+    {
+        "id": "amd_rx9070",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 9070",
+        "max_power": 220
+    },
+    {
+        "id": "amd_rx9060xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 9060 XT",
+        "max_power": 160
+    },
+    {
+        "id": "amd_rx7900xtx",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7900 XTX",
+        "max_power": 355
+    },
+    {
+        "id": "amd_rx7900xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7900 XT",
+        "max_power": 315
+    },
+    {
+        "id": "amd_rx7800xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7800 XT",
+        "max_power": 263
+    },
+    {
+        "id": "amd_rx7700xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7700 XT",
+        "max_power": 245
+    },
+    {
+        "id": "amd_rx7600xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7600 XT",
+        "max_power": 190
+    },
+    {
+        "id": "amd_rx7600",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 7600",
+        "max_power": 165
+    },
+    {
+        "id": "amd_rx6950xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6950 XT",
+        "max_power": 335
+    },
+    {
+        "id": "amd_rx6900xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6900 XT",
+        "max_power": 300
+    },
+    {
+        "id": "amd_rx6800xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6800 XT",
+        "max_power": 300
+    },
+    {
+        "id": "amd_rx6800",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6800",
+        "max_power": 250
+    },
+    {
+        "id": "amd_rx6750xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6750 XT",
+        "max_power": 250
+    },
+    {
+        "id": "amd_rx6700xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6700 XT",
+        "max_power": 230
+    },
+    {
+        "id": "amd_rx6650xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6650 XT",
+        "max_power": 176
+    },
+    {
+        "id": "amd_rx6600xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6600 XT",
+        "max_power": 160
+    },
+    {
+        "id": "amd_rx6600",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6600",
+        "max_power": 132
+    },
+    {
+        "id": "intel_arc_b580",
+        "manufacturer": "Intel",
+        "model": "Arc B580",
+        "max_power": 190
+    },
+    {
+        "id": "intel_arc_b570",
+        "manufacturer": "Intel",
+        "model": "Arc B570",
+        "max_power": 150
+    },
+    {
+        "id": "intel_arc_a770",
+        "manufacturer": "Intel",
+        "model": "Arc A770",
+        "max_power": 225
+    },
+    {
+        "id": "intel_arc_a750",
+        "manufacturer": "Intel",
+        "model": "Arc A750",
+        "max_power": 225
+    },
+    {
+        "id": "intel_arc_a580",
+        "manufacturer": "Intel",
+        "model": "Arc A580",
+        "max_power": 185
+    },
+    {
+        "id": "nvidia_gtx_1660_super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1660 SUPER",
+        "max_power": 125
+    },
+    {
+        "id": "nvidia_gtx_1660",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1660",
+        "max_power": 120
+    },
+    {
+        "id": "nvidia_gtx_1650",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1650",
+        "max_power": 75
+    },
+    {
+        "id": "nvidia_gtx_1080_ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1080 Ti",
+        "max_power": 250
+    },
+    {
+        "id": "nvidia_gtx_1080",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1080",
+        "max_power": 180
+    },
+    {
+        "id": "nvidia_gtx_1070",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1070",
+        "max_power": 150
+    },
+    {
+        "id": "nvidia_gtx_1060",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1060",
+        "max_power": 120
+    },
+    {
+        "id": "nvidia_gtx_980_ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 980 Ti",
+        "max_power": 250
+    },
+    {
+        "id": "nvidia_gtx_980",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 980",
+        "max_power": 165
+    },
+    {
+        "id": "nvidia_gtx_970",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 970",
+        "max_power": 145
+    },
+    {
+        "id": "nvidia_gtx_960",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 960",
+        "max_power": 120
+    },
+    {
+        "id": "nvidia_gtx_750_ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 750 Ti",
+        "max_power": 60
+    }
+]

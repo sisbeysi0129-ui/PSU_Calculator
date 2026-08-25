@@ -1,0 +1,356 @@
+[
+    {
+        "id": "amd_7800x3d",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 7800X3D",
+        "max_power": 162
+    },
+    {
+        "id": "amd_9800x3d",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 9800X3D",
+        "max_power": 162
+    },
+    {
+        "id": "amd_9700x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 9700X",
+        "max_power": 88
+    },
+    {
+        "id": "amd_7700x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 7700X",
+        "max_power": 142
+    },
+    {
+        "id": "amd_7700",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 7700",
+        "max_power": 90
+    },
+    {
+        "id": "amd_7600x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 7600X",
+        "max_power": 142
+    },
+    {
+        "id": "amd_7600",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 7600",
+        "max_power": 88
+    },
+    {
+        "id": "amd_9600x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 9600X",
+        "max_power": 88
+    },
+    {
+        "id": "amd_9950x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 9950X",
+        "max_power": 230
+    },
+    {
+        "id": "amd_9900x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 9900X",
+        "max_power": 162
+    },
+    {
+        "id": "amd_7950x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 7950X",
+        "max_power": 230
+    },
+    {
+        "id": "amd_7900x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 7900X",
+        "max_power": 200
+    },
+    {
+        "id": "amd_7900",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 7900",
+        "max_power": 90
+    },
+    {
+        "id": "amd_5800x3d",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5800X3D",
+        "max_power": 105
+    },
+    {
+        "id": "amd_5800x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5800X",
+        "max_power": 142
+    },
+    {
+        "id": "amd_5700x3d",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5700X3D",
+        "max_power": 105
+    },
+    {
+        "id": "amd_5700x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5700X",
+        "max_power": 76
+    },
+    {
+        "id": "amd_5600x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 5600X",
+        "max_power": 76
+    },
+    {
+        "id": "intel_14900k",
+        "manufacturer": "Intel",
+        "model": "Core i9-14900K",
+        "max_power": 253
+    },
+    {
+        "id": "intel_14700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-14700K",
+        "max_power": 253
+    },
+    {
+        "id": "intel_14600k",
+        "manufacturer": "Intel",
+        "model": "Core i5-14600K",
+        "max_power": 181
+    },
+    {
+        "id": "intel_14400",
+        "manufacturer": "Intel",
+        "model": "Core i5-14400",
+        "max_power": 148
+    },
+    {
+        "id": "intel_14900kf",
+        "manufacturer": "Intel",
+        "model": "Core i9-14900KF",
+        "max_power": 253
+    },
+    {
+        "id": "intel_14700kf",
+        "manufacturer": "Intel",
+        "model": "Core i7-14700KF",
+        "max_power": 253
+    },
+    {
+        "id": "intel_14600kf",
+        "manufacturer": "Intel",
+        "model": "Core i5-14600KF",
+        "max_power": 181
+    },
+    {
+        "id": "intel_13700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-13700K",
+        "max_power": 253
+    },
+    {
+        "id": "intel_13600k",
+        "manufacturer": "Intel",
+        "model": "Core i5-13600K",
+        "max_power": 181
+    },
+    {
+        "id": "intel_13400",
+        "manufacturer": "Intel",
+        "model": "Core i5-13400",
+        "max_power": 148
+    },
+    {
+        "id": "intel_12700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-12700K",
+        "max_power": 190
+    },
+    {
+        "id": "intel_12600k",
+        "manufacturer": "Intel",
+        "model": "Core i5-12600K",
+        "max_power": 150
+    },
+    {
+        "id": "intel_12400",
+        "manufacturer": "Intel",
+        "model": "Core i5-12400",
+        "max_power": 117
+    },
+    {
+        "id": "intel_12100",
+        "manufacturer": "Intel",
+        "model": "Core i3-12100",
+        "max_power": 89
+    },
+    {
+        "id": "intel_10900k",
+        "manufacturer": "Intel",
+        "model": "Core i9-10900K",
+        "max_power": 250
+    },
+    {
+        "id": "intel_10700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-10700K",
+        "max_power": 125
+    },
+    {
+        "id": "intel_10400",
+        "manufacturer": "Intel",
+        "model": "Core i5-10400",
+        "max_power": 65
+    },
+    {
+        "id": "intel_10100",
+        "manufacturer": "Intel",
+        "model": "Core i3-10100",
+        "max_power": 65
+    },
+    {
+        "id": "intel_11900k",
+        "manufacturer": "Intel",
+        "model": "Core i9-11900K",
+        "max_power": 250
+    },
+    {
+        "id": "intel_11700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-11700K",
+        "max_power": 250
+    },
+    {
+        "id": "intel_11400",
+        "manufacturer": "Intel",
+        "model": "Core i5-11400",
+        "max_power": 154
+    },
+    {
+        "id": "amd_1800x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 1800X",
+        "max_power": 95
+    },
+    {
+        "id": "amd_1600",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 1600",
+        "max_power": 65
+    },
+    {
+        "id": "amd_1200",
+        "manufacturer": "AMD",
+        "model": "Ryzen 3 1200",
+        "max_power": 65
+    },
+    {
+        "id": "amd_2700x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 2700X",
+        "max_power": 105
+    },
+    {
+        "id": "amd_2600",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 2600",
+        "max_power": 65
+    },
+    {
+        "id": "amd_2200g",
+        "manufacturer": "AMD",
+        "model": "Ryzen 3 2200G",
+        "max_power": 65
+    },
+    {
+        "id": "amd_3900x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 3900X",
+        "max_power": 142
+    },
+    {
+        "id": "amd_3700x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 3700X",
+        "max_power": 88
+    },
+    {
+        "id": "amd_3600",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 3600",
+        "max_power": 88
+    },
+    {
+        "id": "amd_3100",
+        "manufacturer": "AMD",
+        "model": "Ryzen 3 3100",
+        "max_power": 65
+    },
+    {
+        "id": "amd_5900x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 9 5900X",
+        "max_power": 142
+    },
+    {
+        "id": "intel_870",
+        "manufacturer": "Intel",
+        "model": "Core i7-870",
+        "max_power": 95
+    },
+    {
+        "id": "intel_2600k",
+        "manufacturer": "Intel",
+        "model": "Core i7-2600K",
+        "max_power": 95
+    },
+    {
+        "id": "intel_3770k",
+        "manufacturer": "Intel",
+        "model": "Core i7-3770K",
+        "max_power": 77
+    },
+    {
+        "id": "intel_4790k",
+        "manufacturer": "Intel",
+        "model": "Core i7-4790K",
+        "max_power": 88
+    },
+    {
+        "id": "intel_6700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-6700K",
+        "max_power": 91
+    },
+    {
+        "id": "intel_7700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-7700K",
+        "max_power": 91
+    },
+    {
+        "id": "intel_8700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-8700K",
+        "max_power": 95
+    },
+    {
+        "id": "intel_9700k",
+        "manufacturer": "Intel",
+        "model": "Core i7-9700K",
+        "max_power": 95
+    },
+    {
+        "id": "intel_9900k",
+        "manufacturer": "Intel",
+        "model": "Core i9-9900K",
+        "max_power": 95
+    }
+]

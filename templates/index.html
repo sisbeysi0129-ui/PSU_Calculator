@@ -1,0 +1,3713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSU Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background:
+                radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
+                linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            font-family: "Pretendard", Arial, "Noto Sans KR", sans-serif;
+            color: #111827;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid rgba(148, 163, 184, .28);
+            border-radius: 22px;
+            padding: 38px;
+            box-shadow: 0 20px 55px rgba(30, 41, 59, .12);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 36px);
+            letter-spacing: -1.1px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 24px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #172554 0%, #1d4ed8 62%, #38bdf8 150%);
+            color: white;
+        }
+
+        .hero h1 {
+            color: white;
+        }
+
+        .hero .subtitle {
+            color: #dbeafe;
+        }
+
+        .hero-badge {
+            flex: 0 0 auto;
+            padding: 8px 10px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            color: #eff6ff;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e5e7eb;
+            margin: 22px 0 28px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 0 0 20px;
+            letter-spacing: -.4px;
+        }
+
+        .section {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, .03);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 115px 1fr;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        select,
+        .part-search {
+            width: 100%;
+            height: 42px;
+            padding: 0 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            color: #111827;
+            transition: border-color .15s ease, box-shadow .15s ease;
+        }
+
+        select:focus,
+        .part-search:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+        }
+
+        .quantity-row {
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            gap: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 9px;
+            padding: 13px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .calculate {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 8px 16px rgba(37, 99, 235, .22);
+        }
+
+        .calculate:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .reset {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .reset:hover {
+            background: #d1d5db;
+        }
+
+        .saved-message {
+            width: 100%;
+            margin: 0;
+            color: #047857;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .error {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 9px;
+            background: #fee2e2;
+            color: #b91c1c;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* 검색 */
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-results {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 48px;
+            z-index: 1000;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-result:last-child {
+            border-bottom: 0;
+        }
+
+        .search-result:hover {
+            background: #f3f4f6;
+        }
+
+        .result-model {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .result-info {
+            margin-top: 4px;
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .selected-part {
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .selected-part.active {
+            color: #1e3a8a;
+            font-weight: bold;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
+        .compatibility-note {
+            display: none;
+            margin-top: 8px;
+            padding: 9px 11px;
+            border-radius: 8px;
+            background: #ecfdf5;
+            color: #047857;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* 결과 */
+
+        .result-section {
+            margin-top: 30px;
+            border-top: 2px solid #dbeafe;
+            padding-top: 30px;
+        }
+
+        .recommendation-banner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding: 22px;
+            border: 1px solid #bfdbfe;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #eff6ff, #f0fdfa);
+        }
+
+        .recommendation-kicker {
+            color: #1d4ed8;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .recommendation-title {
+            margin-top: 5px;
+            color: #0f172a;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .recommendation-note {
+            margin: 8px 0 0;
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .recommendation-watt {
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: #1d4ed8;
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .purchase-tip {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: #475569;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .selected-pc {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .selected-item {
+            margin-bottom: 14px;
+        }
+
+        .selected-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .selected-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .selected-value {
+            font-size: 15px;
+            color: #111827;
+        }
+
+        .power-section {
+            margin-top: 28px;
+        }
+
+        .power-table {
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .power-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            transition: background .15s ease;
+        }
+
+        .power-row:hover {
+            background: #f8fafc;
+        }
+
+        .power-value {
+            font-weight: bold;
+        }
+
+        .total {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #bfdbfe;
+            border-radius: 14px;
+            background: #eff6ff;
+        }
+
+        .total-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .margin-power {
+            margin-top: 8px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .psu-section {
+            margin-top: 28px;
+        }
+
+        .psu-cards {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 12px;
+        }
+
+        .psu-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 12px;
+            text-align: center;
+        }
+
+        .psu-card.recommended {
+            border: 2px solid #2563eb;
+            background: white;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, .12);
+        }
+
+        .psu-label {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 7px;
+        }
+
+        .psu-watt {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .psu-desc {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 560px) {
+            .recommendation-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-watt {
+                width: fit-content;
+            }
+        }
+
+        .basic-filter-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .basic-filter-row select {
+            height: 38px;
+            padding: 0 9px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            background: white;
+            font-size: 12px;
+        }
+
+        .basic-filter-label {
+            display: block;
+            margin-bottom: 4px;
+            color: #6b7280;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        @media (max-width:600px) {
+            body {
+                padding: 14px;
+            }
+
+            .container {
+                padding: 22px 16px;
+                border-radius: 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .quantity-row {
+                grid-template-columns: 1fr 90px;
+            }
+
+            .basic-filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .psu-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 18px 14px;
+            }
+
+            .buttons button {
+                flex: 1 1 calc(50% - 5px);
+                padding: 12px 10px;
+            }
+
+            .hero {
+                padding: 20px;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+        }
+
+        /* =========================
+           RAM 제조사 필터
+        ========================= */
+        .ram-manufacturer-filter {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .ram-manufacturer-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 9px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 12px;
+        }
+
+        .ram-manufacturer-title {
+            font-weight: 700;
+        }
+
+        .ram-manufacturer-toggle {
+            border: 0;
+            background: transparent;
+            color: #4b5563;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .ram-manufacturer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0;
+            padding: 4px 5px;
+        }
+
+        .ram-manufacturer-grid label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+            padding: 3px 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .ram-manufacturer-grid input {
+            margin: 0;
+            flex: 0 0 auto;
+        }
+
+        .ram-manufacturer-more {
+            display: none;
+            border-top: 1px solid #e5e7eb;
+            padding: 4px 5px;
+        }
+
+        .ram-manufacturer-more.open {
+            display: block;
+        }
+
+        .ram-manufacturer-more-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+
+        .ram-manufacturer-more-grid label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .ram-manufacturer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 9px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 11px;
+        }
+
+        .ram-manufacturer-footer button {
+            border: 0;
+            background: transparent;
+            color: #4b5563;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        /* =========================
+           SSD 제조사 필터
+        ========================= */
+        .ssd-manufacturer-filter {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .ssd-manufacturer-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 9px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 12px;
+        }
+
+        .ssd-manufacturer-title {
+            font-weight: 700;
+        }
+
+        .ssd-manufacturer-toggle {
+            border: 0;
+            background: transparent;
+            color: #4b5563;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .ssd-manufacturer-grid,
+        .ssd-manufacturer-more-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0;
+        }
+
+        .ssd-manufacturer-grid {
+            padding: 4px 5px;
+        }
+
+        .ssd-manufacturer-grid label,
+        .ssd-manufacturer-more-grid label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+            padding: 3px 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .ssd-manufacturer-grid input,
+        .ssd-manufacturer-more-grid input {
+            margin: 0;
+            flex: 0 0 auto;
+        }
+
+        .ssd-manufacturer-more {
+            display: none;
+            border-top: 1px solid #e5e7eb;
+            padding: 4px 5px;
+        }
+
+        .ssd-manufacturer-more.open {
+            display: block;
+        }
+
+        .ssd-manufacturer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 9px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 11px;
+        }
+
+        .ssd-manufacturer-footer button {
+            border: 0;
+            background: transparent;
+            color: #4b5563;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        @media (max-width: 600px) {
+            .ram-manufacturer-grid,
+            .ram-manufacturer-more-grid,
+            .ssd-manufacturer-grid,
+            .ssd-manufacturer-more-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <div>
+            <h1>⚡ PSU Calculator</h1>
+            <div class="subtitle">
+                내 PC 구성에 맞는 안정적인 파워 용량을 빠르게 확인하세요.
+            </div>
+        </div>
+        <div class="hero-badge">소켓 호환 · 25% 여유 반영</div>
+    </div>
+
+    <hr>
+
+    <h2>PC 구성</h2>
+
+
+    <!-- =========================
+         기본 부품
+    ========================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+            🛠️ 기본 부품
+        </div>
+
+
+        <!-- CPU -->
+
+        <div class="form-row">
+
+            <label for="cpu-search">
+                CPU
+            </label>
+
+            <div class="search-box" id="cpu-search-box">
+
+                <div class="basic-filter-row">
+                    <div>
+                        <span class="basic-filter-label">제조사</span>
+                        <select id="cpu-manufacturer-filter">
+                            <option value="">제조사 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">세대</span>
+                        <select id="cpu-generation-filter">
+                            <option value="">세대 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">등급</span>
+                        <select id="cpu-tier-filter">
+                            <option value="">등급 전체</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input
+                    type="text"
+                    id="cpu-search"
+                    class="part-search"
+                    placeholder="🔍 CPU 모델명, 제조사 검색"
+                    autocomplete="off"
+                >
+
+                <input
+                    type="hidden"
+                    name="cpu"
+                    id="cpu"
+                    form="calculator-form"
+                    value="{{ request.form.get('cpu', '') }}"
+                >
+
+                <div
+                    id="cpu-results"
+                    class="search-results"
+                ></div>
+
+                <div
+                    id="cpu-selected"
+                    class="selected-part"
+                >
+                    CPU를 선택해주세요.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GPU -->
+
+        <div class="form-row">
+
+            <label for="gpu-search">
+                GPU
+            </label>
+
+            <div class="search-box" id="gpu-search-box">
+
+                <div class="basic-filter-row">
+                    <div>
+                        <span class="basic-filter-label">제조사</span>
+                        <select id="gpu-manufacturer-filter">
+                            <option value="">제조사 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">계열</span>
+                        <select id="gpu-family-filter">
+                            <option value="">계열 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">세대</span>
+                        <select id="gpu-generation-filter">
+                            <option value="">세대 전체</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input
+                    type="text"
+                    id="gpu-search"
+                    class="part-search"
+                    placeholder="🔍 GPU 모델명, 제조사 검색"
+                    autocomplete="off"
+                >
+
+                <input
+                    type="hidden"
+                    name="gpu"
+                    id="gpu"
+                    form="calculator-form"
+                    value="{{ request.form.get('gpu', '') }}"
+                >
+
+                <div
+                    id="gpu-results"
+                    class="search-results"
+                ></div>
+
+                <div
+                    id="gpu-selected"
+                    class="selected-part"
+                >
+                    GPU를 선택해주세요.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 메인보드 -->
+
+        <div class="form-row">
+
+            <label for="motherboard-search">
+                메인보드
+            </label>
+
+            <div
+                class="search-box"
+                id="motherboard-search-box"
+            >
+
+                <div class="basic-filter-row">
+                    <div>
+                        <span class="basic-filter-label">제조사</span>
+                        <select id="motherboard-manufacturer-filter">
+                            <option value="">제조사 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">소켓</span>
+                        <select id="motherboard-socket-filter">
+                            <option value="">소켓 전체</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="basic-filter-label">칩셋</span>
+                        <select id="motherboard-chipset-filter">
+                            <option value="">칩셋 전체</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input
+                    type="text"
+                    id="motherboard-search"
+                    class="part-search"
+                    placeholder="🔍 메인보드 모델명, 제조사, 칩셋 검색"
+                    autocomplete="off"
+                >
+
+                <input
+                    type="hidden"
+                    name="motherboard"
+                    id="motherboard"
+                    form="calculator-form"
+                    value="{{ request.form.get('motherboard', '') }}"
+                >
+
+                <div
+                    id="motherboard-results"
+                    class="search-results"
+                ></div>
+
+                <div
+                    id="motherboard-selected"
+                    class="selected-part"
+                >
+                    메인보드를 선택해주세요.
+                </div>
+
+                <div id="motherboard-compatibility-note" class="compatibility-note"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RAM
+    ========================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+            🧠 RAM
+        </div>
+
+        <div class="ram-manufacturer-filter">
+            <div class="ram-manufacturer-head">
+                <span class="ram-manufacturer-title">제조사 🟢</span>
+                <button type="button" class="ram-manufacturer-toggle" id="ram-filter-toggle">닫기 −</button>
+            </div>
+
+            <div class="ram-manufacturer-grid" id="ram-featured-manufacturers"></div>
+
+            <div class="ram-manufacturer-more" id="ram-more-manufacturers">
+                <div class="ram-manufacturer-more-grid" id="ram-all-manufacturers"></div>
+            </div>
+
+            <div class="ram-manufacturer-footer">
+                <button type="button" id="ram-clear-manufacturers">전체 제조사</button>
+                <button type="button" id="ram-sort-toggle">가나다순 ↑</button>
+            </div>
+        </div>
+
+        <div class="quantity-row">
+
+            <select
+                name="ram"
+                id="ram-select"
+                form="calculator-form"
+            >
+                <option value="">
+                    RAM을 선택하세요
+                </option>
+            </select>
+
+            <select
+                name="ram_count"
+                form="calculator-form"
+            >
+
+                <option value="1">
+                    1개
+                </option>
+
+                <option
+                    value="2"
+                    {% if request.form.get('ram_count', '2') == '2' %}
+                    selected
+                    {% endif %}
+                >
+                    2개
+                </option>
+
+                <option value="4">
+                    4개
+                </option>
+
+                <option value="8">
+                    8개
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         저장장치
+    ========================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+            💾 저장장치
+        </div>
+
+        <!-- =========================
+             SSD 제조사
+        ========================= -->
+
+        <div class="ssd-manufacturer-filter">
+
+            <div class="ssd-manufacturer-head">
+                <span class="ssd-manufacturer-title">제조사 🟢</span>
+                <button
+                    type="button"
+                    class="ssd-manufacturer-toggle"
+                    id="ssd-filter-toggle"
+                >닫기 −</button>
+            </div>
+
+            <div
+                class="ssd-manufacturer-grid"
+                id="ssd-featured-manufacturers"
+            ></div>
+
+            <div
+                class="ssd-manufacturer-more"
+                id="ssd-more-manufacturers"
+            >
+                <div
+                    class="ssd-manufacturer-more-grid"
+                    id="ssd-all-manufacturers"
+                ></div>
+            </div>
+
+            <div class="ssd-manufacturer-footer">
+                <button
+                    type="button"
+                    id="ssd-clear-manufacturers"
+                >전체 제조사</button>
+
+                <button
+                    type="button"
+                    id="ssd-sort-toggle"
+                >가나다순 ↑</button>
+            </div>
+
+        </div>
+
+
+        <!-- NVMe -->
+
+        <div
+            class="quantity-row"
+            style="margin-bottom:14px;"
+        >
+
+            <select
+                name="nvme"
+                form="calculator-form"
+            >
+
+                <option value="">
+                    NVMe SSD 선택하지 않음
+                </option>
+
+                {% for ssd in ssds %}
+
+                    {% if
+                        ssd.get('interface','').lower() == 'nvme'
+                        or ssd.get('type','').lower() == 'nvme'
+                        or ssd.get('category','').lower() == 'nvme'
+                    %}
+
+                    <option
+                        value="{{ ssd.id }}"
+                        {% if request.form.get('nvme') == ssd.id %}
+                        selected
+                        {% endif %}
+                    >
+
+                        {{ ssd.manufacturer }}
+                        {{ ssd.model }}
+                        {{ ssd.capacity }}
+
+                        - 약 {{ ssd.power }}W
+
+                    </option>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </select>
+
+
+            <select
+                name="nvme_count"
+                form="calculator-form"
+            >
+
+                <option value="0">0개</option>
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+                <option value="3">3개</option>
+                <option value="4">4개</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- SATA SSD -->
+
+        <div
+            class="quantity-row"
+            style="margin-bottom:14px;"
+        >
+
+            <select
+                name="sata_ssd"
+                form="calculator-form"
+            >
+
+                <option value="">
+                    SATA SSD 선택하지 않음
+                </option>
+
+                {% for ssd in ssds %}
+
+                    {% if
+                        ssd.get('interface','').lower() == 'sata'
+                        or ssd.get('type','').lower() == 'sata'
+                        or ssd.get('category','').lower() == 'sata'
+                    %}
+
+                    <option
+                        value="{{ ssd.id }}"
+                        {% if request.form.get('sata_ssd') == ssd.id %}
+                        selected
+                        {% endif %}
+                    >
+
+                        {{ ssd.manufacturer }}
+                        {{ ssd.model }}
+                        {{ ssd.capacity }}
+
+                        - 약 {{ ssd.power }}W
+
+                    </option>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </select>
+
+
+            <select
+                name="sata_ssd_count"
+                form="calculator-form"
+            >
+
+                <option value="0">0개</option>
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+                <option value="3">3개</option>
+                <option value="4">4개</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- HDD -->
+
+        <div class="ssd-manufacturer-filter">
+            <div class="ssd-manufacturer-head">
+                <span class="ssd-manufacturer-title">제조사</span>
+            </div>
+            <div class="ssd-manufacturer-grid" id="hdd-manufacturer-filter">
+                <label><input type="checkbox" name="hdd-manufacturer-filter" value="Seagate"> <span>Seagate</span></label>
+                <label><input type="checkbox" name="hdd-manufacturer-filter" value="Western Digital"> <span>Western Digital</span></label>
+                <label><input type="checkbox" name="hdd-manufacturer-filter" value="Toshiba"> <span>도시바</span></label>
+            </div>
+        </div>
+
+        <div class="quantity-row">
+
+            <select
+                name="hdd"
+                form="calculator-form"
+            >
+
+                <option value="">
+                    HDD 선택하지 않음
+                </option>
+
+                {% for hdd in hdds %}
+
+                <option
+                    value="{{ hdd.id }}"
+                    {% if request.form.get('hdd') == hdd.id %}
+                    selected
+                    {% endif %}
+                >
+
+                    {{ hdd.manufacturer }}
+                    {{ hdd.model }}
+                    {{ hdd.capacity }}
+
+                    - 약 {{ hdd.power }}W
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <select
+                name="hdd_count"
+                form="calculator-form"
+            >
+
+                <option value="0">0개</option>
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+                <option value="3">3개</option>
+                <option value="4">4개</option>
+                <option value="6">6개</option>
+                <option value="8">8개</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         쿨링
+    ========================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+            ❄️ 쿨링
+        </div>
+
+
+        <div class="form-row">
+
+            <label>
+                CPU 쿨러
+            </label>
+
+            <select
+                name="cooler"
+                form="calculator-form"
+            >
+
+                <option value="5">
+                    공랭 - 약 5W
+                </option>
+
+                <option value="10">
+                    대형 공랭 - 약 10W
+                </option>
+
+                <option value="15">
+                    일체형 수랭 240mm - 약 15W
+                </option>
+
+                <option value="20">
+                    일체형 수랭 360mm - 약 20W
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <label>
+                시스템 팬
+            </label>
+
+            <select
+                name="fans"
+                form="calculator-form"
+            >
+
+                <option value="0">0개</option>
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+
+                <option
+                    value="3"
+                    {% if request.form.get('fans','3') == '3' %}
+                    selected
+                    {% endif %}
+                >
+                    3개
+                </option>
+
+                <option value="4">4개</option>
+                <option value="5">5개</option>
+                <option value="6">6개</option>
+                <option value="8">8개</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         계산
+    ========================= -->
+
+    <form
+        id="calculator-form"
+        method="POST"
+        action="/"
+    >
+
+        <div class="buttons">
+
+            <button
+                type="submit"
+                class="calculate"
+            >
+                ⚡ 전력 계산
+            </button>
+
+            <button
+                type="button"
+                class="reset"
+                onclick="resetCalculator()"
+            >
+                ↻ 초기화
+            </button>
+
+            <button type="button" class="reset" onclick="saveConfiguration()">
+                💾 구성 저장
+            </button>
+
+            <button type="button" class="reset" onclick="loadConfiguration()">
+                📂 저장 구성 불러오기
+            </button>
+
+            <button type="button" class="reset" onclick="copyConfiguration()">
+                📋 구성 복사
+            </button>
+
+            <p id="saved-message" class="saved-message" aria-live="polite"></p>
+
+        </div>
+
+    </form>
+
+
+    {% if error %}
+
+    <div class="error">
+        ⚠️ {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    {% if result %}
+
+    <div class="result-section">
+
+        <div class="recommendation-banner">
+            <div>
+                <div class="recommendation-kicker">이 구성에 가장 무난한 선택</div>
+                <div class="recommendation-title">정격 {{ result.recommended_psu }}W 파워를 추천합니다</div>
+                <p class="recommendation-note">
+                    예상 최대 소비전력 {{ result.total_power }}W에 25% 여유를 반영한 뒤,
+                    업그레이드 여유까지 고려한 권장 용량입니다.
+                </p>
+            </div>
+            <div class="recommendation-watt">{{ result.recommended_psu }} W</div>
+        </div>
+
+        <h2>
+            📋 선택한 PC
+        </h2>
+
+        <div class="selected-pc">
+
+            <div class="selected-item">
+                <div class="selected-label">CPU</div>
+                <div class="selected-value">
+                    {{ result.cpu }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">GPU</div>
+                <div class="selected-value">
+                    {{ result.gpu }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">메인보드</div>
+                <div class="selected-value">
+                    {{ result.motherboard }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">RAM</div>
+                <div class="selected-value">
+                    {{ result.ram }}
+                    × {{ result.ram_count }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">NVMe SSD</div>
+                <div class="selected-value">
+                    {{ result.nvme }}
+                    × {{ result.nvme_count }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">SATA SSD</div>
+                <div class="selected-value">
+                    {{ result.sata_ssd }}
+                    × {{ result.sata_count }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">HDD</div>
+                <div class="selected-value">
+                    {{ result.hdd }}
+                    × {{ result.hdd_count }}
+                </div>
+            </div>
+
+            <div class="selected-item">
+                <div class="selected-label">시스템 팬</div>
+                <div class="selected-value">
+                    {{ result.fan_count }}개
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="power-section">
+
+            <h2>
+                ⚡ 전력 분석
+            </h2>
+
+            <div class="power-table">
+
+                <div class="power-row">
+                    <span>CPU</span>
+                    <span class="power-value">
+                        {{ result.cpu_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>GPU</span>
+                    <span class="power-value">
+                        {{ result.gpu_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>메인보드</span>
+                    <span class="power-value">
+                        {{ result.motherboard_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>RAM</span>
+                    <span class="power-value">
+                        {{ result.ram_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>NVMe SSD</span>
+                    <span class="power-value">
+                        {{ result.nvme_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>SATA SSD</span>
+                    <span class="power-value">
+                        {{ result.sata_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>HDD</span>
+                    <span class="power-value">
+                        {{ result.hdd_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>시스템 팬</span>
+                    <span class="power-value">
+                        {{ result.fan_power }} W
+                    </span>
+                </div>
+
+                <div class="power-row">
+                    <span>CPU 쿨러</span>
+                    <span class="power-value">
+                        {{ result.cooler_power }} W
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="total">
+
+                <div class="total-title">
+                    예상 최대 소비전력:
+                    {{ result.total_power }} W
+                </div>
+
+                <div class="margin-power">
+                    25% 여유 적용:
+                    {{ result.recommended_power }} W
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="psu-section">
+
+            <h2>
+                🔌 PSU 권장 용량
+            </h2>
+
+            <div class="psu-cards">
+
+                <div class="psu-card">
+
+                    <div class="psu-label">
+                        최소 권장
+                    </div>
+
+                    <div class="psu-watt">
+                        {{ result.minimum_psu }} W
+                    </div>
+
+                    <div class="psu-desc">
+                        현재 구성에 필요한
+                        최소 권장 용량
+                    </div>
+
+                </div>
+
+
+                <div class="psu-card recommended">
+
+                    <div class="psu-label">
+                        ⭐ 추천
+                    </div>
+
+                    <div class="psu-watt">
+                        {{ result.recommended_psu }} W
+                    </div>
+
+                    <div class="psu-desc">
+                        적당한 여유를 가진
+                        권장 용량
+                    </div>
+
+                </div>
+
+
+                <div class="psu-card">
+
+                    <div class="psu-label">
+                        여유 있게
+                    </div>
+
+                    <div class="psu-watt">
+                        {{ result.high_psu }} W
+                    </div>
+
+                    <div class="psu-desc">
+                        향후 업그레이드까지
+                        고려
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="purchase-tip">
+                구매 전에는 정격 출력, GPU 보조전원 커넥터 수, 80 PLUS 등급, 보증기간도 함께 확인하세요.
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   데이터
+========================================================= */
+
+const cpuData = [
+    {% for cpu in cpus %}
+    {
+        id: {{ cpu.id | tojson }},
+        manufacturer: {{ cpu.manufacturer | tojson }},
+        model: {{ cpu.model | tojson }},
+        max_power: {{
+            cpu.get('max_power', cpu.get('power', 0)) | tojson
+        }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const gpuData = [
+    {% for gpu in gpus %}
+    {
+        id: {{ gpu.id | tojson }},
+        manufacturer: {{ gpu.manufacturer | tojson }},
+        model: {{ gpu.model | tojson }},
+        max_power: {{
+            gpu.get('max_power', gpu.get('power', 0)) | tojson
+        }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const motherboardData = [
+    {% for motherboard in motherboards %}
+    {
+        id: {{ motherboard.id | tojson }},
+        manufacturer: {{ motherboard.manufacturer | tojson }},
+        model: {{ motherboard.model | tojson }},
+        power: {{
+            motherboard.get(
+                'power',
+                motherboard.get('max_power', 0)
+            ) | tojson
+        }},
+        socket: {{
+            motherboard.get('socket', '') | tojson
+        }},
+        chipset: {{
+            motherboard.get('chipset', '') | tojson
+        }},
+        form_factor: {{
+            motherboard.get('form_factor', '') | tojson
+        }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+const ramData = [
+    {% for ram in rams %}
+    {
+        id: {{ ram.id | tojson }},
+        manufacturer: {{ ram.get('manufacturer', '') | tojson }},
+        type: {{ ram.get('type', '') | tojson }},
+        capacity: {{ ram.get('capacity', '') | tojson }},
+        speed: {{ ram.get('speed', '') | tojson }},
+        power: {{ ram.get('power', 0) | tojson }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const ssdData = [
+    {% for ssd in ssds %}
+    {
+        id: {{ ssd.id | tojson }},
+        manufacturer: {{ ssd.get('manufacturer', '') | tojson }},
+        model: {{ ssd.get('model', '') | tojson }},
+        interface: {{ ssd.get('interface', '') | tojson }},
+        type: {{ ssd.get('type', '') | tojson }},
+        category: {{ ssd.get('category', '') | tojson }},
+        capacity: {{ ssd.get('capacity', '') | tojson }},
+        power: {{ ssd.get('power', 0) | tojson }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+const hddData = [
+    {% for hdd in hdds %}
+    {
+        id: {{ hdd.id | tojson }},
+        manufacturer: {{ hdd.get('manufacturer', '') | tojson }},
+        model: {{ hdd.get('model', '') | tojson }},
+        capacity: {{ hdd.get('capacity', '') | tojson }},
+        power: {{ hdd.get('power', 0) | tojson }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+
+/* =========================================================
+   한글 표기 / 오타 / 통용 명칭
+========================================================= */
+
+const aliases = {
+
+    "intel": [
+        "intel",
+        "인텔"
+    ],
+
+    "인텔": [
+        "intel",
+        "인텔"
+    ],
+
+    "nvidia": [
+        "nvidia",
+        "엔비디아",
+        "앤비디아"
+    ],
+
+    "엔비디아": [
+        "nvidia",
+        "엔비디아",
+        "앤비디아"
+    ],
+
+    "앤비디아": [
+        "nvidia",
+        "엔비디아",
+        "앤비디아"
+    ],
+
+    "amd": [
+        "amd",
+        "암드"
+    ],
+
+    "암드": [
+        "amd",
+        "암드"
+    ],
+
+    "geforce": [
+        "geforce",
+        "지포스"
+    ],
+
+    "지포스": [
+        "geforce",
+        "지포스"
+    ],
+
+    "radeon": [
+        "radeon",
+        "라데온"
+    ],
+
+    "라데온": [
+        "radeon",
+        "라데온"
+    ],
+
+    "ryzen": [
+        "ryzen",
+        "라이젠"
+    ],
+
+    "라이젠": [
+        "ryzen",
+        "라이젠"
+    ],
+
+    "core": [
+        "core",
+        "코어"
+    ],
+
+    "코어": [
+        "core",
+        "코어"
+    ],
+
+    "threadripper": [
+        "threadripper",
+        "스레드리퍼"
+    ],
+
+    "스레드리퍼": [
+        "threadripper",
+        "스레드리퍼"
+    ],
+
+    "xeon": [
+        "xeon",
+        "제온"
+    ],
+
+    "제온": [
+        "xeon",
+        "제온"
+    ],
+
+    "quadro": [
+        "quadro",
+        "쿼드로"
+    ],
+
+    "쿼드로": [
+        "quadro",
+        "쿼드로"
+    ],
+
+    "asus": [
+        "asus",
+        "아수스",
+        "에이수스"
+    ],
+
+    "아수스": [
+        "asus",
+        "아수스",
+        "에이수스"
+    ],
+
+    "에이수스": [
+        "asus",
+        "아수스",
+        "에이수스"
+    ],
+
+    "gigabyte": [
+        "gigabyte",
+        "기가바이트"
+    ],
+
+    "기가바이트": [
+        "gigabyte",
+        "기가바이트"
+    ],
+
+    "msi": [
+        "msi",
+        "엠에스아이"
+    ],
+
+    "엠에스아이": [
+        "msi",
+        "엠에스아이"
+    ],
+
+    "asrock": [
+        "asrock",
+        "애즈락"
+    ],
+
+    "애즈락": [
+        "asrock",
+        "애즈락"
+    ],
+
+    "biostar": [
+        "biostar",
+        "바이오스타"
+    ],
+
+    "바이오스타": [
+        "biostar",
+        "바이오스타"
+    ]
+};
+
+
+/* =========================================================
+   검색어 정규화
+========================================================= */
+
+function normalizeSearchText(text) {
+
+    return String(text)
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+
+/* =========================================================
+   제품 검색용 텍스트 생성
+========================================================= */
+
+function makeSearchText(part) {
+
+    let fields = [];
+
+    for (const key in part) {
+
+        if (
+            part[key] !== null &&
+            part[key] !== undefined &&
+            typeof part[key] !== "object"
+        ) {
+
+            fields.push(
+                String(part[key])
+            );
+
+        }
+
+    }
+
+
+    const baseText =
+        normalizeSearchText(
+            fields.join(" ")
+        );
+
+
+    let searchWords = [
+        baseText
+    ];
+
+
+    for (
+        const key in aliases
+    ) {
+
+        if (
+            baseText.includes(
+                normalizeSearchText(key)
+            )
+        ) {
+
+            searchWords.push(
+                ...aliases[key]
+            );
+
+        }
+
+    }
+
+
+    return normalizeSearchText(
+        searchWords.join(" ")
+    );
+}
+
+
+/* =========================================================
+   공통 검색 함수
+========================================================= */
+
+function searchParts(
+    keyword,
+    data,
+    resultsBox,
+    inputBox,
+    searchBox,
+    selectedBox,
+    type
+) {
+
+    /* 검색 결과가 필터와 입력창을 덮지 않도록 입력창 바로 아래에 표시한다. */
+    resultsBox.style.top = `${searchBox.offsetTop + searchBox.offsetHeight + 6}px`;
+
+    const text =
+        normalizeSearchText(
+            keyword
+        );
+
+
+    const hasPartFilters =
+        (type === "cpu" && (
+            document.getElementById("cpu-manufacturer-filter")?.value ||
+            document.getElementById("cpu-generation-filter")?.value ||
+            document.getElementById("cpu-tier-filter")?.value
+        )) ||
+        (type === "gpu" && (
+            document.getElementById("gpu-manufacturer-filter")?.value ||
+            document.getElementById("gpu-family-filter")?.value ||
+            document.getElementById("gpu-generation-filter")?.value
+        )) ||
+        (type === "motherboard" && (
+            document.getElementById("motherboard-manufacturer-filter")?.value ||
+            document.getElementById("motherboard-socket-filter")?.value ||
+            document.getElementById("motherboard-chipset-filter")?.value
+        ));
+
+    if (!text && !hasPartFilters) {
+        resultsBox.innerHTML = "";
+        resultsBox.style.display = "none";
+        return;
+    }
+
+    let results = data;
+
+    if (type === "cpu") {
+        const manufacturer = document.getElementById("cpu-manufacturer-filter")?.value || "";
+        const generation = document.getElementById("cpu-generation-filter")?.value || "";
+        const tier = document.getElementById("cpu-tier-filter")?.value || "";
+        results = results.filter(cpu =>
+            (!manufacturer || normalizeSearchText(cpu.manufacturer) === normalizeSearchText(manufacturer)) &&
+            (!generation || cpuGeneration(cpu) === generation) &&
+            (!tier || cpuTier(cpu) === tier)
+        );
+    }
+
+    if (type === "gpu") {
+        const manufacturer = document.getElementById("gpu-manufacturer-filter")?.value || "";
+        const family = document.getElementById("gpu-family-filter")?.value || "";
+        const generation = document.getElementById("gpu-generation-filter")?.value || "";
+        results = results.filter(gpu =>
+            (!manufacturer || normalizeSearchText(gpu.manufacturer) === normalizeSearchText(manufacturer)) &&
+            (!family || gpuFamily(gpu) === family) &&
+            (!generation || gpuGeneration(gpu) === generation)
+        );
+    }
+
+    if (type === "motherboard") {
+        const manufacturer = document.getElementById("motherboard-manufacturer-filter")?.value || "";
+        const socket = document.getElementById("motherboard-socket-filter")?.value || "";
+        const chipset = document.getElementById("motherboard-chipset-filter")?.value || "";
+        const selectedCpu = cpuData.find(cpu => String(cpu.id) === String(cpuInput?.value || ""));
+        const requiredSocket = selectedCpu ? cpuSocket(selectedCpu) : "";
+        results = results.filter(board =>
+            (!manufacturer || normalizeSearchText(board.manufacturer) === normalizeSearchText(manufacturer)) &&
+            (!requiredSocket || normalizeSearchText(board.socket) === normalizeSearchText(requiredSocket)) &&
+            (!socket || normalizeSearchText(board.socket) === normalizeSearchText(socket)) &&
+            (!chipset || normalizeSearchText(board.chipset) === normalizeSearchText(chipset))
+        );
+    }
+
+    if (text) {
+        results = results.filter(part =>
+            makeSearchText(part).includes(text)
+        );
+    }
+
+
+    resultsBox.innerHTML = "";
+
+
+    if (results.length === 0) {
+
+        resultsBox.innerHTML = `
+            <div class="search-result">
+                <div class="result-model">
+                    검색 결과가 없습니다.
+                </div>
+
+                <div class="result-info">
+                    다른 표기나 모델명을 검색해보세요.
+                </div>
+            </div>
+        `;
+
+        resultsBox.style.display =
+            "block";
+
+        return;
+    }
+
+
+    results.forEach(
+        part => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "search-result";
+
+
+            let info = "";
+
+
+            if (type === "motherboard") {
+
+                const details = [];
+
+                if (part.socket) {
+                    details.push(
+                        `소켓 ${part.socket}`
+                    );
+                }
+
+                if (part.chipset) {
+                    details.push(
+                        `칩셋 ${part.chipset}`
+                    );
+                }
+
+                if (part.form_factor) {
+                    details.push(
+                        part.form_factor
+                    );
+                }
+
+                if (part.power !== undefined) {
+                    details.push(
+                        `약 ${part.power}W`
+                    );
+                }
+
+                info =
+                    details.join(" · ");
+
+            } else {
+
+                info =
+                    `최대 소비전력 ${part.max_power}W`;
+
+            }
+
+
+            item.innerHTML = `
+                <div class="result-model">
+                    ${part.manufacturer}
+                    ${part.model}
+                </div>
+
+                <div class="result-info">
+                    ${info}
+                </div>
+            `;
+
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    inputBox.value =
+                        part.id;
+
+
+                    searchBox.value =
+                        `${part.manufacturer} ${part.model}`;
+
+
+                    if (
+                        type ===
+                        "motherboard"
+                    ) {
+
+                        selectedBox.innerHTML =
+                            `✓ ${part.manufacturer}
+                             ${part.model}
+                             · 약 ${part.power}W`;
+
+                    } else {
+
+                        selectedBox.innerHTML =
+                            `✓ ${part.manufacturer}
+                             ${part.model}
+                             · 최대 ${part.max_power}W`;
+
+                    }
+
+
+                    selectedBox.classList.add(
+                        "active"
+                    );
+
+                    if (type === "cpu") {
+                        syncMotherboardSocket(part);
+                    }
+
+
+                    resultsBox.style.display =
+                        "none";
+
+                }
+            );
+
+
+            resultsBox.appendChild(
+                item
+            );
+
+        }
+    );
+
+
+    resultsBox.style.display =
+        "block";
+}
+
+
+/* =========================================================
+   CPU / GPU / 메인보드 대분류 필터
+========================================================= */
+
+function uniqueFilterValues(values) {
+    return [...new Set(
+        values
+            .filter(v => v !== null && v !== undefined && String(v).trim() !== "")
+            .map(v => String(v))
+    )];
+}
+
+function setFilterOptions(selectId, values, placeholder) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    const old = select.value;
+    select.innerHTML = `<option value="">${placeholder}</option>`;
+    uniqueFilterValues(values)
+        .sort((a,b) => a.localeCompare(b, "ko", {numeric:true, sensitivity:"base"}))
+        .forEach(value => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+        });
+    if ([...select.options].some(o => o.value === old)) select.value = old;
+}
+
+function cpuGeneration(cpu) {
+    const m = normalizeSearchText(cpu.model).toUpperCase();
+    if (normalizeSearchText(cpu.manufacturer) === "intel") {
+        let match = m.match(/\bI[3579]\s*-?\s*(\d{3,5})[A-Z0-9]*\b/);
+        if (match) {
+            const n = match[1];
+            const gen = n.length === 3 ? 1 : (n.length === 5 ? parseInt(n.slice(0,2),10) : parseInt(n[0],10));
+            if (gen >= 1 && gen <= 20) return `${gen}세대`;
+        }
+    }
+    if (normalizeSearchText(cpu.manufacturer) === "amd") {
+        const match = m.match(/\bRYZEN\s+[3579]\s+(\d{4,5})/);
+        if (match) return `Ryzen ${match[1][0]}세대`;
+    }
+    return "기타";
+}
+
+function cpuTier(cpu) {
+    const m = normalizeSearchText(cpu.model).toUpperCase();
+    let match = m.match(/\bI([3579])(?:\s|-|$)/);
+    if (match) return `i${match[1]}`;
+    match = m.match(/\bRYZEN\s+([3579])(?:\s|-|$)/);
+    if (match) return `Ryzen ${match[1]}`;
+    return "기타";
+}
+
+function cpuSocket(cpu) {
+    const manufacturer = normalizeSearchText(cpu.manufacturer);
+    const model = String(cpu.model || "").toUpperCase();
+
+    if (manufacturer === "intel") {
+        const match = model.match(/\bCORE\s+I[3579]-?(\d{3,5})/);
+        if (match) {
+            const number = match[1];
+            const generation = number.length === 3 ? 1 : parseInt(number.slice(0, number.length === 5 ? 2 : 1), 10);
+            if (generation === 1) return "LGA1156";
+            if (generation === 2 || generation === 3) return "LGA1155";
+            if (generation === 4) return "LGA1150";
+            if (generation === 6 || generation === 7) return "LGA1151";
+            if (generation === 8 || generation === 9) return "LGA1151-v2";
+            if (generation === 10 || generation === 11) return "LGA1200";
+            if (generation >= 12 && generation <= 14) return "LGA1700";
+        }
+    }
+
+    if (manufacturer === "amd") {
+        const match = model.match(/\bRYZEN\s+[3579]\s+(\d{4,5})/);
+        if (match) {
+            const series = parseInt(match[1].slice(0, 1), 10);
+            if ([1, 2, 3, 5].includes(series)) return "AM4";
+            if (series === 7 || series === 9) return "AM5";
+        }
+    }
+
+    return "";
+}
+
+function syncMotherboardSocket(cpu) {
+    const socket = cpuSocket(cpu);
+    if (!socket) return;
+
+    const socketFilter = document.getElementById("motherboard-socket-filter");
+    if (!socketFilter) return;
+
+    updateMotherboardFilters();
+    if ([...socketFilter.options].some(option => option.value === socket)) {
+        socketFilter.value = socket;
+    }
+    updateMotherboardFilters();
+
+    const selectedBoard = motherboardData.find(board =>
+        String(board.id) === String(motherboardInput?.value || "")
+    );
+    if (selectedBoard && normalizeSearchText(selectedBoard.socket) !== normalizeSearchText(socket)) {
+        motherboardInput.value = "";
+        motherboardSearch.value = "";
+        motherboardSelected.textContent = "메인보드를 선택해주세요.";
+        motherboardSelected.classList.remove("active");
+    }
+
+    const compatibilityNote = document.getElementById("motherboard-compatibility-note");
+    if (compatibilityNote) {
+        compatibilityNote.textContent = `${cpu.model}에 맞는 ${socket} 소켓 메인보드만 표시합니다.`;
+        compatibilityNote.style.display = "block";
+    }
+
+    refreshPartResults("motherboard");
+}
+
+function gpuFamily(gpu) {
+    const m = normalizeSearchText(gpu.model).toUpperCase();
+    const maker = normalizeSearchText(gpu.manufacturer);
+    if (maker === "amd" && /\bRX\s*\d{4}/.test(m)) return "Radeon RX";
+    if (maker === "nvidia" && /\bRTX\s*\d{3,4}/.test(m)) return "RTX";
+    if (maker === "nvidia" && /\bGTX\s*\d{3,4}/.test(m)) return "GTX";
+    if (maker === "amd" && /\bRADEON/.test(m)) return "Radeon";
+    return "기타";
+}
+
+function gpuGeneration(gpu) {
+    const m = normalizeSearchText(gpu.model).toUpperCase();
+    const maker = normalizeSearchText(gpu.manufacturer);
+    let match;
+    if (maker === "amd") {
+        match = m.match(/\bRX\s*(\d{4})/);
+        if (match) return `RX ${Math.floor(parseInt(match[1],10) / 1000) * 1000} 시리즈`;
+    }
+    if (maker === "nvidia") {
+        match = m.match(/\bRTX\s*(\d{3,4})/);
+        if (match) return `RTX ${Math.floor(parseInt(match[1],10) / 1000) * 1000} 시리즈`;
+        match = m.match(/\bGTX\s*(\d{3,4})/);
+        if (match) return `GTX ${Math.floor(parseInt(match[1],10) / 100) * 100} 시리즈`;
+    }
+    return "기타";
+}
+
+function updateCpuFilters() {
+    const maker = document.getElementById("cpu-manufacturer-filter")?.value || "";
+    const data = maker ? cpuData.filter(c => normalizeSearchText(c.manufacturer) === normalizeSearchText(maker)) : cpuData;
+    setFilterOptions("cpu-generation-filter", data.map(cpuGeneration), "세대 전체");
+    const gen = document.getElementById("cpu-generation-filter")?.value || "";
+    const tierData = gen ? data.filter(c => cpuGeneration(c) === gen) : data;
+    setFilterOptions("cpu-tier-filter", tierData.map(cpuTier), "등급 전체");
+}
+
+function updateGpuFilters() {
+    const maker = document.getElementById("gpu-manufacturer-filter")?.value || "";
+    const data = maker ? gpuData.filter(g => normalizeSearchText(g.manufacturer) === normalizeSearchText(maker)) : gpuData;
+    setFilterOptions("gpu-family-filter", data.map(gpuFamily), "계열 전체");
+    const family = document.getElementById("gpu-family-filter")?.value || "";
+    const genData = family ? data.filter(g => gpuFamily(g) === family) : data;
+    setFilterOptions("gpu-generation-filter", genData.map(gpuGeneration), "세대 전체");
+}
+
+function updateMotherboardFilters() {
+    const maker = document.getElementById("motherboard-manufacturer-filter")?.value || "";
+    const data = maker ? motherboardData.filter(b => normalizeSearchText(b.manufacturer) === normalizeSearchText(maker)) : motherboardData;
+    setFilterOptions("motherboard-socket-filter", data.map(b => b.socket), "소켓 전체");
+    const socket = document.getElementById("motherboard-socket-filter")?.value || "";
+    const chipData = socket ? data.filter(b => normalizeSearchText(b.socket) === normalizeSearchText(socket)) : data;
+    setFilterOptions("motherboard-chipset-filter", chipData.map(b => b.chipset), "칩셋 전체");
+}
+
+function refreshPartResults(type) {
+    if (type === "cpu") cpuSearch.dispatchEvent(new Event("input"));
+    if (type === "gpu") gpuSearch.dispatchEvent(new Event("input"));
+    if (type === "motherboard") motherboardSearch.dispatchEvent(new Event("input"));
+}
+
+function initializePartFilters() {
+    setFilterOptions("cpu-manufacturer-filter", cpuData.map(c => c.manufacturer), "제조사 전체");
+    setFilterOptions("gpu-manufacturer-filter", gpuData.map(g => g.manufacturer), "제조사 전체");
+    setFilterOptions("motherboard-manufacturer-filter", motherboardData.map(b => b.manufacturer), "제조사 전체");
+    updateCpuFilters();
+    updateGpuFilters();
+    updateMotherboardFilters();
+}
+
+/* =========================================================
+   RAM 제조사 필터
+========================================================= */
+
+const ramFeaturedManufacturers = [
+    "삼성전자",
+    "마이크론",
+    "SK하이닉스",
+    "ESSENCORE",
+    "PATRIOT",
+    "TeamGroup",
+    "HP",
+    "Apacer",
+    "G.SKILL",
+    "ADATA"
+];
+
+const ramManufacturerAliases = {
+    "삼성전자": ["삼성전자", "Samsung", "Samsung Electronics"],
+    "ESSENCORE": ["ESSENCORE"],
+    "마이크론": ["마이크론", "Micron", "Micron Technology"],
+    "PATRIOT": ["PATRIOT", "Patriot"],
+    "TeamGroup": ["TeamGroup", "TEAMGROUP", "Team Group"],
+    "G.SKILL": ["G.SKILL", "GSkill", "G.Skill", "GSKILL"],
+    "GeIL": ["GeIL", "GEIL"],
+    "ADATA": ["ADATA", "Adata"],
+    "SK하이닉스": ["SK하이닉스", "SK hynix", "SK Hynix", "Hynix"],
+    "HP": ["HP", "Hewlett Packard", "Hewlett-Packard"],
+    "Apacer": ["Apacer", "APACER", "Apacer Technology"]
+};
+
+let ramManufacturerExpanded = false;
+let ramSortAscending = true;
+let selectedRamManufacturers = new Set();
+
+function ramManufacturerKey(name) {
+    return normalizeSearchText(name).replace(/[._\-\s]/g, "");
+}
+
+function ramManufacturerMatches(actual, group) {
+    const actualKey = ramManufacturerKey(actual);
+    const aliases = ramManufacturerAliases[group] || [group];
+    return aliases.some(alias => ramManufacturerKey(alias) === actualKey);
+}
+
+function getRamManufacturerGroups() {
+    const groups = new Map();
+
+    ramData.forEach(ram => {
+        const actual = String(ram.manufacturer || "").trim();
+        if (!actual) return;
+        let group = actual;
+        for (const featured of ramFeaturedManufacturers) {
+            if (ramManufacturerMatches(actual, featured)) {
+                group = featured;
+                break;
+            }
+        }
+        if (!groups.has(group)) groups.set(group, []);
+        groups.get(group).push(actual);
+    });
+
+    ramFeaturedManufacturers.forEach(name => {
+        if (!groups.has(name)) groups.set(name, []);
+    });
+
+    return [...groups.keys()];
+}
+
+function ramManufacturerLabel(name) {
+    return name;
+}
+
+function createRamManufacturerCheckbox(name) {
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = name;
+    checkbox.checked = selectedRamManufacturers.has(name);
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            selectedRamManufacturers.add(name);
+        } else {
+            selectedRamManufacturers.delete(name);
+        }
+        rebuildRamOptions();
+    });
+
+    const text = document.createElement("span");
+    text.textContent = ramManufacturerLabel(name);
+
+    label.appendChild(checkbox);
+    label.appendChild(text);
+    return label;
+}
+
+function renderRamManufacturerFilters() {
+    const featuredBox = document.getElementById("ram-featured-manufacturers");
+    const allBox = document.getElementById("ram-all-manufacturers");
+    if (!featuredBox || !allBox) return;
+
+    featuredBox.innerHTML = "";
+    allBox.innerHTML = "";
+
+    ramFeaturedManufacturers.forEach(name => {
+        featuredBox.appendChild(
+            createRamManufacturerCheckbox(name)
+        );
+    });
+
+    let all = getRamManufacturerGroups();
+
+    all.sort((a, b) => {
+        const result = a.localeCompare(b, "ko", {
+            numeric: true,
+            sensitivity: "base"
+        });
+        return ramSortAscending ? result : -result;
+    });
+
+    all.forEach(name => {
+        if (ramFeaturedManufacturers.includes(name)) return;
+        allBox.appendChild(
+            createRamManufacturerCheckbox(name)
+        );
+    });
+}
+
+function ramMatchesSelectedManufacturer(ram) {
+    if (selectedRamManufacturers.size === 0) return true;
+
+    for (const group of selectedRamManufacturers) {
+        if (ramManufacturerMatches(ram.manufacturer, group)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function rebuildRamOptions() {
+    const select = document.getElementById("ram-select");
+    if (!select) return;
+
+    const currentValue = select.value;
+
+    select.innerHTML = `
+        <option value="">RAM을 선택하세요</option>
+    `;
+
+    ramData
+        .filter(ram => ramMatchesSelectedManufacturer(ram))
+        .forEach(ram => {
+            const option = document.createElement("option");
+            option.value = ram.id;
+            option.textContent =
+                `${ram.manufacturer} ${ram.type || ""} ${ram.capacity || ""} ${ram.speed || ""} - 약 ${ram.power || 0}W`;
+            select.appendChild(option);
+        });
+
+    if ([...select.options].some(option =>
+        String(option.value) === String(currentValue)
+    )) {
+        select.value = currentValue;
+    } else {
+        select.value = "";
+    }
+}
+
+function toggleRamManufacturerPanel() {
+    const more = document.getElementById("ram-more-manufacturers");
+    const toggle = document.getElementById("ram-filter-toggle");
+    if (!more || !toggle) return;
+
+    ramManufacturerExpanded = !ramManufacturerExpanded;
+    more.classList.toggle("open", ramManufacturerExpanded);
+    toggle.textContent = ramManufacturerExpanded
+        ? "닫기 −"
+        : "더보기 +";
+}
+
+const ramFilterToggle =
+    document.getElementById("ram-filter-toggle");
+
+if (ramFilterToggle) {
+    ramFilterToggle.addEventListener(
+        "click",
+        toggleRamManufacturerPanel
+    );
+}
+
+const ramClearManufacturers =
+    document.getElementById("ram-clear-manufacturers");
+
+if (ramClearManufacturers) {
+    ramClearManufacturers.addEventListener(
+        "click",
+        function() {
+            selectedRamManufacturers.clear();
+            renderRamManufacturerFilters();
+            rebuildRamOptions();
+        }
+    );
+}
+
+const ramSortToggle =
+    document.getElementById("ram-sort-toggle");
+
+if (ramSortToggle) {
+    ramSortToggle.addEventListener(
+        "click",
+        function() {
+            ramSortAscending = !ramSortAscending;
+            renderRamManufacturerFilters();
+            ramSortToggle.textContent =
+                ramSortAscending
+                    ? "가나다순 ↑"
+                    : "가나다순 ↓";
+        }
+    );
+}
+
+renderRamManufacturerFilters();
+rebuildRamOptions();
+
+/* =========================================================
+   SSD 제조사 필터
+========================================================= */
+
+const ssdFeaturedManufacturers = [
+    "SANDISK",
+    "삼성전자",
+    "Western Digital",
+    "SK하이닉스",
+    "마이크론",
+    "ESSENCORE",
+    "Seagate",
+    "ADATA"
+];
+
+const ssdManufacturerAliases = {
+    "SANDISK": ["SANDISK", "SanDisk", "San Disk", "샌디스크"],
+    "삼성전자": ["삼성전자", "Samsung", "Samsung Electronics"],
+    "Western Digital": ["Western Digital", "WesternDigital", "WD", "웨스턴디지털"],
+    "SK하이닉스": ["SK하이닉스", "SK hynix", "SK Hynix", "Hynix"],
+    "마이크론": ["마이크론", "Micron", "Micron Technology"],
+    "ESSENCORE": ["ESSENCORE"],
+    "Seagate": ["Seagate", "SEAGATE", "씨게이트"],
+    "ADATA": ["ADATA", "Adata"],
+    "KIOXIA": ["KIOXIA", "Kioxia", "키옥시아"],
+    "파이슨": ["파이슨", "PHISON", "Phison"],
+    "Apacer": ["Apacer", "APACER"],
+    "한창코퍼레이션": ["한창코퍼레이션", "한창", "한창컴퍼니"]
+};
+
+let ssdManufacturerExpanded = false;
+let ssdSortAscending = true;
+let selectedSsdManufacturers = new Set();
+
+function ssdManufacturerKey(name) {
+    return normalizeSearchText(name).replace(/[._\-\s]/g, "");
+}
+
+function ssdManufacturerMatches(actual, group) {
+    const actualKey = ssdManufacturerKey(actual);
+    const aliases = ssdManufacturerAliases[group] || [group];
+    return aliases.some(alias => ssdManufacturerKey(alias) === actualKey);
+}
+
+function getSsdManufacturerGroups() {
+    const groups = new Map();
+
+    ssdData.forEach(ssd => {
+        const actual = String(ssd.manufacturer || "").trim();
+        if (!actual) return;
+
+        let group = actual;
+
+        for (const featured of ssdFeaturedManufacturers) {
+            if (ssdManufacturerMatches(actual, featured)) {
+                group = featured;
+                break;
+            }
+        }
+
+        for (const special of ["KIOXIA", "파이슨", "Apacer", "한창코퍼레이션"]) {
+            if (ssdManufacturerMatches(actual, special)) {
+                group = special;
+                break;
+            }
+        }
+
+        if (!groups.has(group)) groups.set(group, []);
+        groups.get(group).push(actual);
+    });
+
+    ssdFeaturedManufacturers.forEach(name => {
+        if (!groups.has(name)) groups.set(name, []);
+    });
+
+    return [...groups.keys()];
+}
+
+function createSsdManufacturerCheckbox(name) {
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = name;
+    checkbox.checked = selectedSsdManufacturers.has(name);
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            selectedSsdManufacturers.add(name);
+        } else {
+            selectedSsdManufacturers.delete(name);
+        }
+        rebuildSsdOptions();
+    });
+
+    const text = document.createElement("span");
+    text.textContent = name;
+
+    label.appendChild(checkbox);
+    label.appendChild(text);
+    return label;
+}
+
+function renderSsdManufacturerFilters() {
+    const featuredBox = document.getElementById("ssd-featured-manufacturers");
+    const allBox = document.getElementById("ssd-all-manufacturers");
+    if (!featuredBox || !allBox) return;
+
+    featuredBox.innerHTML = "";
+    allBox.innerHTML = "";
+
+    ssdFeaturedManufacturers.forEach(name => {
+        featuredBox.appendChild(createSsdManufacturerCheckbox(name));
+    });
+
+    let all = getSsdManufacturerGroups();
+
+    all.sort((a, b) => {
+        const result = a.localeCompare(b, "ko", {
+            numeric: true,
+            sensitivity: "base"
+        });
+        return ssdSortAscending ? result : -result;
+    });
+
+    all.forEach(name => {
+        if (ssdFeaturedManufacturers.includes(name)) return;
+        allBox.appendChild(createSsdManufacturerCheckbox(name));
+    });
+}
+
+function ssdMatchesSelectedManufacturer(ssd) {
+    if (selectedSsdManufacturers.size === 0) return false;
+
+    for (const group of selectedSsdManufacturers) {
+        if (ssdManufacturerMatches(ssd.manufacturer, group)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function isNvmeSsd(ssd) {
+    const interfaceName = String(ssd.interface || "").toLowerCase();
+    const type = String(ssd.type || "").toLowerCase();
+    const category = String(ssd.category || "").toLowerCase();
+    return interfaceName === "nvme" || type === "nvme" || category === "nvme";
+}
+
+function isSataSsd(ssd) {
+    const interfaceName = String(ssd.interface || "").toLowerCase();
+    const type = String(ssd.type || "").toLowerCase();
+    const category = String(ssd.category || "").toLowerCase();
+    return interfaceName === "sata" || type === "sata" || category === "sata";
+}
+
+function rebuildSsdOptions() {
+    const nvmeSelect = document.querySelector('select[name="nvme"]');
+    const sataSelect = document.querySelector('select[name="sata_ssd"]');
+    const hasSelectedManufacturer = selectedSsdManufacturers.size > 0;
+
+    const currentNvme = nvmeSelect ? nvmeSelect.value : "";
+    const currentSata = sataSelect ? sataSelect.value : "";
+
+    if (nvmeSelect) {
+        nvmeSelect.innerHTML = hasSelectedManufacturer
+            ? '<option value="">NVMe SSD 선택하지 않음</option>'
+            : '<option value="">제조사를 먼저 선택해주세요</option>';
+
+        ssdData
+            .filter(isNvmeSsd)
+            .filter(ssd => ssdMatchesSelectedManufacturer(ssd))
+            .forEach(ssd => {
+                const option = document.createElement("option");
+                option.value = ssd.id;
+                option.textContent = `${ssd.manufacturer} ${ssd.model}${ssd.capacity ? ` ${ssd.capacity}` : ""} - 약 ${ssd.power || 0}W`;
+                nvmeSelect.appendChild(option);
+            });
+
+        if ([...nvmeSelect.options].some(o => String(o.value) === String(currentNvme))) {
+            nvmeSelect.value = currentNvme;
+        }
+    }
+
+    if (sataSelect) {
+        sataSelect.innerHTML = hasSelectedManufacturer
+            ? '<option value="">SATA SSD 선택하지 않음</option>'
+            : '<option value="">제조사를 먼저 선택해주세요</option>';
+
+        ssdData
+            .filter(isSataSsd)
+            .filter(ssd => ssdMatchesSelectedManufacturer(ssd))
+            .forEach(ssd => {
+                const option = document.createElement("option");
+                option.value = ssd.id;
+                option.textContent = `${ssd.manufacturer} ${ssd.model}${ssd.capacity ? ` ${ssd.capacity}` : ""} - 약 ${ssd.power || 0}W`;
+                sataSelect.appendChild(option);
+            });
+
+        if ([...sataSelect.options].some(o => String(o.value) === String(currentSata))) {
+            sataSelect.value = currentSata;
+        }
+    }
+}
+
+const ssdFilterToggle = document.getElementById("ssd-filter-toggle");
+if (ssdFilterToggle) {
+    ssdFilterToggle.addEventListener("click", function() {
+        ssdManufacturerExpanded = !ssdManufacturerExpanded;
+        document
+            .getElementById("ssd-more-manufacturers")
+            .classList.toggle("open", ssdManufacturerExpanded);
+        ssdFilterToggle.textContent = ssdManufacturerExpanded
+            ? "닫기 −"
+            : "더보기 +";
+    });
+}
+
+const ssdClearManufacturers = document.getElementById("ssd-clear-manufacturers");
+if (ssdClearManufacturers) {
+    ssdClearManufacturers.addEventListener("click", function() {
+        selectedSsdManufacturers.clear();
+        renderSsdManufacturerFilters();
+        rebuildSsdOptions();
+    });
+}
+
+const ssdSortToggle = document.getElementById("ssd-sort-toggle");
+if (ssdSortToggle) {
+    ssdSortToggle.addEventListener("click", function() {
+        ssdSortAscending = !ssdSortAscending;
+        renderSsdManufacturerFilters();
+        ssdSortToggle.textContent = ssdSortAscending
+            ? "가나다순 ↑"
+            : "가나다순 ↓";
+    });
+}
+
+function restoreSsdManufacturersFromSelection() {
+    const selectedIds = [
+        {{ request.form.get('nvme', '') | tojson }},
+        {{ request.form.get('sata_ssd', '') | tojson }}
+    ].filter(Boolean);
+
+    selectedIds.forEach(id => {
+        const ssd = ssdData.find(item => String(item.id) === String(id));
+        if (!ssd) return;
+
+        const group = getSsdManufacturerGroups().find(name =>
+            ssdManufacturerMatches(ssd.manufacturer, name)
+        ) || ssd.manufacturer;
+
+        selectedSsdManufacturers.add(group);
+    });
+}
+
+restoreSsdManufacturersFromSelection();
+renderSsdManufacturerFilters();
+rebuildSsdOptions();
+
+/* =========================================================
+   HDD 제조사 필터
+========================================================= */
+
+function rebuildHddOptions() {
+    const hddSelect = document.querySelector('select[name="hdd"]');
+    const selectedManufacturers = [...document.querySelectorAll('input[name="hdd-manufacturer-filter"]:checked')]
+        .map(checkbox => checkbox.value);
+    const currentHdd = hddSelect ? hddSelect.value : "";
+    const hasSelectedManufacturer = selectedManufacturers.length > 0;
+
+    if (!hddSelect) return;
+
+    hddSelect.innerHTML = hasSelectedManufacturer
+        ? '<option value="">HDD 선택하지 않음</option>'
+        : '<option value="">제조사를 먼저 선택해주세요</option>';
+
+    hddData
+        .filter(hdd =>
+            selectedManufacturers.some(manufacturer =>
+                normalizeSearchText(hdd.manufacturer) === normalizeSearchText(manufacturer)
+            )
+        )
+        .forEach(hdd => {
+            const option = document.createElement("option");
+            option.value = hdd.id;
+            option.textContent = `${hdd.manufacturer} ${hdd.model}${hdd.capacity ? ` ${hdd.capacity}` : ""} - 약 ${hdd.power || 0}W`;
+            hddSelect.appendChild(option);
+        });
+
+    if ([...hddSelect.options].some(option => String(option.value) === String(currentHdd))) {
+        hddSelect.value = currentHdd;
+    }
+}
+
+document.querySelectorAll('input[name="hdd-manufacturer-filter"]').forEach(checkbox => {
+    checkbox.addEventListener("change", rebuildHddOptions);
+});
+
+function restoreHddManufacturerFromSelection() {
+    const initialHddId = {{ request.form.get('hdd', '') | tojson }};
+    if (!initialHddId) return;
+
+    const hdd = hddData.find(item => String(item.id) === String(initialHddId));
+    if (!hdd) return;
+
+    const checkbox = [...document.querySelectorAll('input[name="hdd-manufacturer-filter"]')]
+        .find(item => normalizeSearchText(item.value) === normalizeSearchText(hdd.manufacturer));
+
+    if (checkbox) checkbox.checked = true;
+}
+
+restoreHddManufacturerFromSelection();
+rebuildHddOptions();
+
+
+/* =========================================================
+   요소
+========================================================= */
+
+const cpuSearch =
+    document.getElementById(
+        "cpu-search"
+    );
+
+const cpuResults =
+    document.getElementById(
+        "cpu-results"
+    );
+
+const cpuInput =
+    document.getElementById(
+        "cpu"
+    );
+
+const cpuSelected =
+    document.getElementById(
+        "cpu-selected"
+    );
+
+
+const gpuSearch =
+    document.getElementById(
+        "gpu-search"
+    );
+
+const gpuResults =
+    document.getElementById(
+        "gpu-results"
+    );
+
+const gpuInput =
+    document.getElementById(
+        "gpu"
+    );
+
+const gpuSelected =
+    document.getElementById(
+        "gpu-selected"
+    );
+
+
+const motherboardSearch =
+    document.getElementById(
+        "motherboard-search"
+    );
+
+const motherboardResults =
+    document.getElementById(
+        "motherboard-results"
+    );
+
+const motherboardInput =
+    document.getElementById(
+        "motherboard"
+    );
+
+const motherboardSelected =
+    document.getElementById(
+        "motherboard-selected"
+    );
+
+
+/* =========================================================
+   이벤트
+========================================================= */
+
+cpuSearch.addEventListener(
+    "input",
+    function() {
+
+        searchParts(
+            cpuSearch.value,
+            cpuData,
+            cpuResults,
+            cpuInput,
+            cpuSearch,
+            cpuSelected,
+            "cpu"
+        );
+
+    }
+);
+
+
+gpuSearch.addEventListener(
+    "input",
+    function() {
+
+        searchParts(
+            gpuSearch.value,
+            gpuData,
+            gpuResults,
+            gpuInput,
+            gpuSearch,
+            gpuSelected,
+            "gpu"
+        );
+
+    }
+);
+
+
+motherboardSearch.addEventListener(
+    "input",
+    function() {
+
+        searchParts(
+            motherboardSearch.value,
+            motherboardData,
+            motherboardResults,
+            motherboardInput,
+            motherboardSearch,
+            motherboardSelected,
+            "motherboard"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   대분류 필터 이벤트
+========================================================= */
+
+[
+    "cpu-manufacturer-filter",
+    "cpu-generation-filter",
+    "cpu-tier-filter"
+].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("change", function() {
+        if (id === "cpu-manufacturer-filter") {
+            document.getElementById("cpu-generation-filter").value = "";
+            document.getElementById("cpu-tier-filter").value = "";
+            cpuInput.value = "";
+            cpuSearch.value = "";
+            cpuSelected.textContent = "CPU를 선택해주세요.";
+            cpuSelected.classList.remove("active");
+            const compatibilityNote = document.getElementById("motherboard-compatibility-note");
+            if (compatibilityNote) compatibilityNote.style.display = "none";
+        }
+        if (id === "cpu-manufacturer-filter" || id === "cpu-generation-filter") updateCpuFilters();
+        refreshPartResults("cpu");
+    });
+});
+
+[
+    "gpu-manufacturer-filter",
+    "gpu-family-filter",
+    "gpu-generation-filter"
+].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("change", function() {
+        if (id === "gpu-manufacturer-filter") {
+            document.getElementById("gpu-family-filter").value = "";
+            document.getElementById("gpu-generation-filter").value = "";
+        }
+        if (id === "gpu-family-filter") {
+            document.getElementById("gpu-generation-filter").value = "";
+        }
+        if (id === "gpu-manufacturer-filter" || id === "gpu-family-filter") {
+            gpuInput.value = "";
+            gpuSearch.value = "";
+            gpuSelected.textContent = "GPU를 선택해주세요.";
+            gpuSelected.classList.remove("active");
+            updateGpuFilters();
+        }
+        refreshPartResults("gpu");
+    });
+});
+
+[
+    "motherboard-manufacturer-filter",
+    "motherboard-socket-filter",
+    "motherboard-chipset-filter"
+].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("change", function() {
+        if (id === "motherboard-manufacturer-filter") {
+            document.getElementById("motherboard-socket-filter").value = "";
+            document.getElementById("motherboard-chipset-filter").value = "";
+            motherboardInput.value = "";
+            motherboardSearch.value = "";
+            motherboardSelected.textContent = "메인보드를 선택해주세요.";
+            motherboardSelected.classList.remove("active");
+        }
+        if (id === "motherboard-manufacturer-filter" || id === "motherboard-socket-filter") updateMotherboardFilters();
+        if (id === "motherboard-manufacturer-filter") {
+            document.getElementById("motherboard-socket-filter").value = "";
+            document.getElementById("motherboard-chipset-filter").value = "";
+        }
+        refreshPartResults("motherboard");
+    });
+});
+
+initializePartFilters();
+
+
+/* =========================================================
+   선택값 복구
+========================================================= */
+
+function restorePart(
+    input,
+    search,
+    selected,
+    data,
+    type
+) {
+
+    const selectedId =
+        input.value;
+
+
+    if (!selectedId) {
+        return;
+    }
+
+
+    const part =
+        data.find(
+            item =>
+                String(item.id) ===
+                String(selectedId)
+        );
+
+
+    if (!part) {
+        return;
+    }
+
+
+    search.value =
+        `${part.manufacturer} ${part.model}`;
+
+
+    if (
+        type ===
+        "motherboard"
+    ) {
+
+        selected.innerHTML =
+            `✓ ${part.manufacturer}
+             ${part.model}
+             · 약 ${part.power}W`;
+
+    } else {
+
+        selected.innerHTML =
+            `✓ ${part.manufacturer}
+             ${part.model}
+             · 최대 ${part.max_power}W`;
+
+    }
+
+
+    selected.classList.add(
+        "active"
+    );
+}
+
+
+/* =========================================================
+   페이지 시작
+========================================================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const initialRamId = {{ request.form.get('ram', '') | tojson }};
+        if (initialRamId) {
+            const ramSelect = document.getElementById("ram-select");
+            if (ramSelect) {
+                ramSelect.value = initialRamId;
+            }
+        }
+
+        restorePart(
+            cpuInput,
+            cpuSearch,
+            cpuSelected,
+            cpuData,
+            "cpu"
+        );
+
+        const restoredCpu = cpuData.find(cpu => String(cpu.id) === String(cpuInput.value));
+        if (restoredCpu) {
+            syncMotherboardSocket(restoredCpu);
+        }
+
+
+        restorePart(
+            gpuInput,
+            gpuSearch,
+            gpuSelected,
+            gpuData,
+            "gpu"
+        );
+
+
+        restorePart(
+            motherboardInput,
+            motherboardSearch,
+            motherboardSelected,
+            motherboardData,
+            "motherboard"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   검색창 바깥 클릭
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const boxes = [
+
+            {
+                box:
+                    document.getElementById(
+                        "cpu-search-box"
+                    ),
+
+                results:
+                    cpuResults
+            },
+
+            {
+                box:
+                    document.getElementById(
+                        "gpu-search-box"
+                    ),
+
+                results:
+                    gpuResults
+            },
+
+            {
+                box:
+                    document.getElementById(
+                        "motherboard-search-box"
+                    ),
+
+                results:
+                    motherboardResults
+            }
+
+        ];
+
+
+        boxes.forEach(
+            item => {
+
+                if (
+                    item.box &&
+                    !item.box.contains(
+                        event.target
+                    )
+                ) {
+
+                    item.results.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   초기화
+========================================================= */
+
+const savedConfigurationKey = "psu-calculator-configuration";
+
+function showSavedMessage(message) {
+    const messageBox = document.getElementById("saved-message");
+    if (messageBox) messageBox.textContent = message;
+}
+
+function saveConfiguration() {
+    const fields = {};
+    document.querySelectorAll('#calculator-form [name], [form="calculator-form"]').forEach(field => {
+        fields[field.name] = field.value;
+    });
+
+    const configuration = {
+        fields,
+        ramManufacturers: [...selectedRamManufacturers],
+        ssdManufacturers: [...selectedSsdManufacturers],
+        hddManufacturers: [...document.querySelectorAll('input[name="hdd-manufacturer-filter"]:checked')]
+            .map(checkbox => checkbox.value)
+    };
+
+    try {
+        localStorage.setItem(savedConfigurationKey, JSON.stringify(configuration));
+        showSavedMessage("현재 구성을 이 브라우저에 저장했습니다.");
+    } catch (error) {
+        showSavedMessage("구성을 저장하지 못했습니다. 브라우저 저장 공간을 확인해주세요.");
+    }
+}
+
+function loadConfiguration() {
+    const saved = localStorage.getItem(savedConfigurationKey);
+    if (!saved) {
+        showSavedMessage("저장된 구성이 없습니다.");
+        return;
+    }
+
+    let configuration;
+    try {
+        configuration = JSON.parse(saved);
+    } catch (error) {
+        localStorage.removeItem(savedConfigurationKey);
+        showSavedMessage("저장된 구성 데이터를 읽지 못해 삭제했습니다. 다시 저장해주세요.");
+        return;
+    }
+
+    if (!configuration || typeof configuration !== "object") {
+        showSavedMessage("저장된 구성 데이터 형식이 올바르지 않습니다.");
+        return;
+    }
+
+    resetCalculator();
+
+    selectedRamManufacturers.clear();
+    (configuration.ramManufacturers || []).forEach(name => selectedRamManufacturers.add(name));
+    renderRamManufacturerFilters();
+    rebuildRamOptions();
+
+    selectedSsdManufacturers.clear();
+    (configuration.ssdManufacturers || []).forEach(name => selectedSsdManufacturers.add(name));
+    renderSsdManufacturerFilters();
+    rebuildSsdOptions();
+
+    const hddManufacturers = configuration.hddManufacturers || [];
+    document.querySelectorAll('input[name="hdd-manufacturer-filter"]').forEach(checkbox => {
+        checkbox.checked = hddManufacturers.includes(checkbox.value);
+    });
+    rebuildHddOptions();
+
+    Object.entries(configuration.fields || {}).forEach(([name, value]) => {
+        document.querySelectorAll(`[name="${name}"]`).forEach(field => {
+            field.value = value;
+        });
+    });
+
+    restorePart(cpuInput, cpuSearch, cpuSelected, cpuData, "cpu");
+    const restoredCpu = cpuData.find(cpu => String(cpu.id) === String(cpuInput.value));
+    if (restoredCpu) syncMotherboardSocket(restoredCpu);
+    restorePart(gpuInput, gpuSearch, gpuSelected, gpuData, "gpu");
+    restorePart(motherboardInput, motherboardSearch, motherboardSelected, motherboardData, "motherboard");
+    showSavedMessage("저장한 구성을 불러왔습니다.");
+}
+
+function copyConfiguration() {
+    const selectedText = (id, fallback) =>
+        document.getElementById(id)?.textContent.trim() || fallback;
+    const optionText = name => {
+        const select = document.querySelector(`select[name="${name}"]`);
+        return select?.selectedOptions[0]?.textContent.trim() || "선택하지 않음";
+    };
+
+    const summary = [
+        "[PSU Calculator 구성]",
+        `CPU: ${selectedText("cpu-selected", "선택하지 않음")}`,
+        `GPU: ${selectedText("gpu-selected", "선택하지 않음")}`,
+        `메인보드: ${selectedText("motherboard-selected", "선택하지 않음")}`,
+        `RAM: ${optionText("ram")} × ${optionText("ram_count")}`,
+        `NVMe SSD: ${optionText("nvme")} × ${optionText("nvme_count")}`,
+        `SATA SSD: ${optionText("sata_ssd")} × ${optionText("sata_ssd_count")}`,
+        `HDD: ${optionText("hdd")} × ${optionText("hdd_count")}`,
+        `CPU 쿨러: ${optionText("cooler")}`,
+        `시스템 팬: ${optionText("fans")}`
+    ].join("\n");
+
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+        showSavedMessage("이 브라우저에서는 자동 복사를 지원하지 않습니다.");
+        return;
+    }
+
+    navigator.clipboard.writeText(summary)
+        .then(() => showSavedMessage("구성 내용을 클립보드에 복사했습니다."))
+        .catch(() => showSavedMessage("복사하지 못했습니다. 브라우저 권한을 확인해주세요."));
+}
+
+function resetCalculator() {
+
+    const selects =
+        document.querySelectorAll(
+            "select"
+        );
+
+
+    selects.forEach(
+        function(select) {
+
+            if (
+                select.name ===
+                "ram_count"
+            ) {
+
+                select.value = "2";
+
+            }
+
+            else if (
+                select.name ===
+                "fans"
+            ) {
+
+                select.value = "3";
+
+            }
+
+            else if (
+                select.name ===
+                "nvme_count" ||
+                select.name ===
+                "sata_ssd_count" ||
+                select.name ===
+                "hdd_count"
+            ) {
+
+                select.value = "0";
+
+            }
+
+            else if (
+                select.name ===
+                "cooler"
+            ) {
+
+                select.value = "5";
+
+            }
+
+            else {
+
+                select.selectedIndex = 0;
+
+            }
+
+        }
+    );
+
+
+    cpuInput.value = "";
+    cpuSearch.value = "";
+    cpuSelected.innerHTML =
+        "CPU를 선택해주세요.";
+    cpuSelected.classList.remove(
+        "active"
+    );
+    cpuResults.innerHTML = "";
+    cpuResults.style.display =
+        "none";
+
+
+    gpuInput.value = "";
+    gpuSearch.value = "";
+    gpuSelected.innerHTML =
+        "GPU를 선택해주세요.";
+    gpuSelected.classList.remove(
+        "active"
+    );
+    gpuResults.innerHTML = "";
+    gpuResults.style.display =
+        "none";
+
+
+    motherboardInput.value = "";
+    motherboardSearch.value = "";
+    motherboardSelected.innerHTML =
+        "메인보드를 선택해주세요.";
+    motherboardSelected.classList.remove(
+        "active"
+    );
+    motherboardResults.innerHTML = "";
+    motherboardResults.style.display =
+        "none";
+
+
+    [
+        "cpu-manufacturer-filter",
+        "cpu-generation-filter",
+        "cpu-tier-filter",
+        "gpu-manufacturer-filter",
+        "gpu-family-filter",
+        "gpu-generation-filter",
+        "motherboard-manufacturer-filter",
+        "motherboard-socket-filter",
+        "motherboard-chipset-filter"
+    ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.selectedIndex = 0;
+    });
+
+    /*
+     * 대분류를 다시 전체 상태로 재생성한다.
+     */
+    updateCpuFilters();
+    updateGpuFilters();
+    updateMotherboardFilters();
+    document.querySelectorAll('input[name="hdd-manufacturer-filter"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    rebuildHddOptions();
+
+    /*
+     * updateCpuFilters / updateGpuFilters 내부에서
+     * 기존 값을 보존하는 로직이 있기 때문에,
+     * 초기화에서는 마지막에 한 번 더 강제로 비운다.
+     */
+    [
+        "cpu-manufacturer-filter",
+        "cpu-generation-filter",
+        "cpu-tier-filter",
+        "gpu-manufacturer-filter",
+        "gpu-family-filter",
+        "gpu-generation-filter",
+        "motherboard-manufacturer-filter",
+        "motherboard-socket-filter",
+        "motherboard-chipset-filter"
+    ].forEach(id => {
+        const el = document.getElementById(id);
+
+        if (el) {
+            el.value = "";
+            el.selectedIndex = 0;
+        }
+    });
+
+    /*
+     * CPU/GPU/메인보드 선택 상태를 확실하게 제거한다.
+     */
+    cpuInput.value = "";
+    gpuInput.value = "";
+    motherboardInput.value = "";
+
+    cpuSearch.value = "";
+    gpuSearch.value = "";
+    motherboardSearch.value = "";
+
+    cpuSelected.innerHTML =
+        "CPU를 선택해주세요.";
+
+    gpuSelected.innerHTML =
+        "GPU를 선택해주세요.";
+
+    motherboardSelected.innerHTML =
+        "메인보드를 선택해주세요.";
+
+    cpuSelected.classList.remove("active");
+    gpuSelected.classList.remove("active");
+    motherboardSelected.classList.remove("active");
+
+    const compatibilityNote = document.getElementById("motherboard-compatibility-note");
+    if (compatibilityNote) compatibilityNote.style.display = "none";
+
+    cpuResults.innerHTML = "";
+    gpuResults.innerHTML = "";
+    motherboardResults.innerHTML = "";
+
+    cpuResults.style.display = "none";
+    gpuResults.style.display = "none";
+    motherboardResults.style.display = "none";
+
+
+    selectedRamManufacturers.clear();
+    renderRamManufacturerFilters();
+    rebuildRamOptions();
+
+
+    const resultSection =
+        document.querySelector(
+            ".result-section"
+        );
+
+
+    if (resultSection) {
+        resultSection.remove();
+    }
+
+
+    const error =
+        document.querySelector(
+            ".error"
+        );
+
+
+    if (error) {
+        error.remove();
+    }
+
+}
+
+</script>
+
+</body>
+</html>

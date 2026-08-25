@@ -1,0 +1,426 @@
+[
+  {
+    "id": "ram-samsung-ddr3-4gb-1333",
+    "manufacturer": "삼성전자",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-samsung-ddr4-8gb-3200",
+    "manufacturer": "삼성전자",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-samsung-ddr5-8gb-5600",
+    "manufacturer": "삼성전자",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-sk-hynix-ddr3-4gb-1333",
+    "manufacturer": "SK하이닉스",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-sk-hynix-ddr4-8gb-3200",
+    "manufacturer": "SK하이닉스",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-sk-hynix-ddr5-8gb-5600",
+    "manufacturer": "SK하이닉스",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-micron-ddr3-4gb-1333",
+    "manufacturer": "마이크론",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-micron-ddr4-8gb-3200",
+    "manufacturer": "마이크론",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-micron-ddr5-8gb-5600",
+    "manufacturer": "마이크론",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-essencore-ddr3-4gb-1333",
+    "manufacturer": "ESSENCORE",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-essencore-ddr4-8gb-3200",
+    "manufacturer": "ESSENCORE",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-essencore-ddr5-8gb-5600",
+    "manufacturer": "ESSENCORE",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-patriot-ddr3-4gb-1333",
+    "manufacturer": "PATRIOT",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-patriot-ddr4-8gb-3200",
+    "manufacturer": "PATRIOT",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-patriot-ddr5-8gb-5600",
+    "manufacturer": "PATRIOT",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-teamgroup-ddr3-4gb-1333",
+    "manufacturer": "TeamGroup",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-teamgroup-ddr4-8gb-3200",
+    "manufacturer": "TeamGroup",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-teamgroup-ddr5-8gb-5600",
+    "manufacturer": "TeamGroup",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-gskill-ddr3-4gb-1333",
+    "manufacturer": "G.SKILL",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-gskill-ddr4-8gb-3200",
+    "manufacturer": "G.SKILL",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-gskill-ddr5-8gb-5600",
+    "manufacturer": "G.SKILL",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-geil-ddr3-4gb-1333",
+    "manufacturer": "GeIL",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-geil-ddr4-8gb-3200",
+    "manufacturer": "GeIL",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-geil-ddr5-8gb-5600",
+    "manufacturer": "GeIL",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-adata-ddr3-4gb-1333",
+    "manufacturer": "ADATA",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-adata-ddr4-8gb-3200",
+    "manufacturer": "ADATA",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-adata-ddr5-8gb-5600",
+    "manufacturer": "ADATA",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-hp-ddr3-4gb-1333",
+    "manufacturer": "HP",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-hp-ddr4-8gb-3200",
+    "manufacturer": "HP",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-hp-ddr5-8gb-5600",
+    "manufacturer": "HP",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-apacer-ddr3-4gb-1333",
+    "manufacturer": "Apacer",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-apacer-ddr4-8gb-3200",
+    "manufacturer": "Apacer",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-apacer-ddr5-8gb-5600",
+    "manufacturer": "Apacer",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-kingston-ddr3-4gb-1333",
+    "manufacturer": "킹스톤",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-kingston-ddr4-8gb-3200",
+    "manufacturer": "킹스톤",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-kingston-ddr5-8gb-5600",
+    "manufacturer": "킹스톤",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-tamuz-ddr3-4gb-1333",
+    "manufacturer": "타무즈",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-tamuz-ddr4-8gb-3200",
+    "manufacturer": "타무즈",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-tamuz-ddr5-8gb-5600",
+    "manufacturer": "타무즈",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-corsair-ddr3-4gb-1333",
+    "manufacturer": "커세어",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-corsair-ddr4-8gb-3200",
+    "manufacturer": "커세어",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-corsair-ddr5-8gb-5600",
+    "manufacturer": "커세어",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-oloy-ddr3-4gb-1333",
+    "manufacturer": "OLOy",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-oloy-ddr4-8gb-3200",
+    "manufacturer": "OLOy",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-oloy-ddr5-8gb-5600",
+    "manufacturer": "OLOy",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-vcolor-ddr3-4gb-1333",
+    "manufacturer": "V-Color",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-vcolor-ddr4-8gb-3200",
+    "manufacturer": "V-Color",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-vcolor-ddr5-8gb-5600",
+    "manufacturer": "V-Color",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+
+  {
+    "id": "ram-pny-ddr3-4gb-1333",
+    "manufacturer": "PNY",
+    "type": "DDR3",
+    "capacity": "4GB",
+    "speed": "1333MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-pny-ddr4-8gb-3200",
+    "manufacturer": "PNY",
+    "type": "DDR4",
+    "capacity": "8GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-pny-ddr5-8gb-5600",
+    "manufacturer": "PNY",
+    "type": "DDR5",
+    "capacity": "8GB",
+    "speed": "5600MHz",
+    "power": 4
+  }
+]

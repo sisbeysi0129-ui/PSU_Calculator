@@ -1,0 +1,65 @@
+[
+    {
+        "id": "hdd1",
+        "manufacturer": "Western Digital",
+        "model": "WD Blue 1TB",
+        "capacity": "1TB",
+        "power": 6
+    },
+    {
+        "id": "hdd2",
+        "manufacturer": "Western Digital",
+        "model": "WD Blue 2TB",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "hdd3",
+        "manufacturer": "Western Digital",
+        "model": "WD Blue 4TB",
+        "capacity": "4TB",
+        "power": 7
+    },
+    {
+        "id": "hdd4",
+        "manufacturer": "Seagate",
+        "model": "BarraCuda 1TB",
+        "capacity": "1TB",
+        "power": 6
+    },
+    {
+        "id": "hdd5",
+        "manufacturer": "Seagate",
+        "model": "BarraCuda 2TB",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "hdd6",
+        "manufacturer": "Seagate",
+        "model": "BarraCuda 4TB",
+        "capacity": "4TB",
+        "power": 7
+    },
+    {
+        "id": "hdd7",
+        "manufacturer": "Toshiba",
+        "model": "P300 1TB",
+        "capacity": "1TB",
+        "power": 6
+    },
+    {
+        "id": "hdd8",
+        "manufacturer": "Toshiba",
+        "model": "P300 2TB",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "hdd9",
+        "manufacturer": "Toshiba",
+        "model": "P300 4TB",
+        "capacity": "4TB",
+        "power": 7
+    }
+]

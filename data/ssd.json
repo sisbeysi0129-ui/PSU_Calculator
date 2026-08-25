@@ -1,0 +1,170 @@
+[
+    {
+        "id": "nvme1",
+        "manufacturer": "Samsung",
+        "model": "990 PRO",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme2",
+        "manufacturer": "Samsung",
+        "model": "990 PRO",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme3",
+        "manufacturer": "Samsung",
+        "model": "980 PRO",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme4",
+        "manufacturer": "Samsung",
+        "model": "980 PRO",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme5",
+        "manufacturer": "WD",
+        "model": "Black SN850X",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme6",
+        "manufacturer": "WD",
+        "model": "Black SN850X",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme7",
+        "manufacturer": "SK hynix",
+        "model": "Platinum P41",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme8",
+        "manufacturer": "SK hynix",
+        "model": "Platinum P41",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme9",
+        "manufacturer": "Crucial",
+        "model": "T500",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme10",
+        "manufacturer": "Crucial",
+        "model": "T500",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme11",
+        "manufacturer": "Solidigm",
+        "model": "P44 Pro",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme12",
+        "manufacturer": "Solidigm",
+        "model": "P44 Pro",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "sata1",
+        "manufacturer": "Samsung",
+        "model": "870 EVO",
+        "type": "SATA",
+        "capacity": "500GB",
+        "power": 3
+    },
+    {
+        "id": "sata2",
+        "manufacturer": "Samsung",
+        "model": "870 EVO",
+        "type": "SATA",
+        "capacity": "1TB",
+        "power": 3
+    },
+    {
+        "id": "sata3",
+        "manufacturer": "Samsung",
+        "model": "870 EVO",
+        "type": "SATA",
+        "capacity": "2TB",
+        "power": 4
+    },
+    {
+        "id": "sata4",
+        "manufacturer": "Crucial",
+        "model": "MX500",
+        "type": "SATA",
+        "capacity": "500GB",
+        "power": 3
+    },
+    {
+        "id": "sata5",
+        "manufacturer": "Crucial",
+        "model": "MX500",
+        "type": "SATA",
+        "capacity": "1TB",
+        "power": 3
+    },
+    {
+        "id": "sata6",
+        "manufacturer": "Crucial",
+        "model": "MX500",
+        "type": "SATA",
+        "capacity": "2TB",
+        "power": 4
+    },
+    {
+        "id": "sata7",
+        "manufacturer": "WD",
+        "model": "Blue SA510",
+        "type": "SATA",
+        "capacity": "500GB",
+        "power": 3
+    },
+    {
+        "id": "sata8",
+        "manufacturer": "WD",
+        "model": "Blue SA510",
+        "type": "SATA",
+        "capacity": "1TB",
+        "power": 3
+    },
+    {
+        "id": "sata9",
+        "manufacturer": "Kingston",
+        "model": "KC600",
+        "type": "SATA",
+        "capacity": "1TB",
+        "power": 3
+    }
+]
