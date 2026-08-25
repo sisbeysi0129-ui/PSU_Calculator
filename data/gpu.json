@@ -340,5 +340,119 @@
         "manufacturer": "NVIDIA",
         "model": "GeForce GTX 750 Ti",
         "max_power": 60
+    },
+    {
+        "id": "nvidia_rtx4080",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4080",
+        "max_power": 320
+    },
+    {
+        "id": "nvidia_rtx4070ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 4070 Ti",
+        "max_power": 285
+    },
+    {
+        "id": "nvidia_rtx2080ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2080 Ti",
+        "max_power": 250
+    },
+    {
+        "id": "nvidia_rtx2080",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2080",
+        "max_power": 215
+    },
+    {
+        "id": "nvidia_rtx2070_super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2070 SUPER",
+        "max_power": 215
+    },
+    {
+        "id": "nvidia_rtx2060_super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2060 SUPER",
+        "max_power": 175
+    },
+    {
+        "id": "nvidia_rtx2060",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2060",
+        "max_power": 160
+    },
+    {
+        "id": "nvidia_gtx_1050ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1050 Ti",
+        "max_power": 75
+    },
+    {
+        "id": "nvidia_gtx_1050",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1050",
+        "max_power": 75
+    },
+    {
+        "id": "amd_rx6500xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6500 XT",
+        "max_power": 113
+    },
+    {
+        "id": "amd_rx6400",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 6400",
+        "max_power": 53
+    },
+    {
+        "id": "amd_rx5700xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 5700 XT",
+        "max_power": 225
+    },
+    {
+        "id": "amd_rx5700",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 5700",
+        "max_power": 180
+    },
+    {
+        "id": "amd_rx5600xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 5600 XT",
+        "max_power": 150
+    },
+    {
+        "id": "amd_rx5500xt",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 5500 XT",
+        "max_power": 130
+    },
+    {
+        "id": "amd_rx590",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 590",
+        "max_power": 175
+    },
+    {
+        "id": "amd_rx580",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 580",
+        "max_power": 185
+    },
+    {
+        "id": "amd_rx570",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 570",
+        "max_power": 150
+    },
+    {
+        "id": "intel_arc_a380",
+        "manufacturer": "Intel",
+        "model": "Arc A380",
+        "max_power": 75
     }
 ]

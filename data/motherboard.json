@@ -388,5 +388,104 @@
         "chipset": "Z390",
         "form_factor": "ATX",
         "power": 45
+    },
+    {
+        "id": "asus_tuf_b450_plus_ii",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING B450-PLUS II",
+        "socket": "AM4",
+        "chipset": "B450",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "msi_b450_tomahawk_max",
+        "manufacturer": "MSI",
+        "model": "B450 TOMAHAWK MAX",
+        "socket": "AM4",
+        "chipset": "B450",
+        "form_factor": "ATX",
+        "power": 45
+    },
+    {
+        "id": "gigabyte_b450m_ds3h",
+        "manufacturer": "GIGABYTE",
+        "model": "B450M DS3H",
+        "socket": "AM4",
+        "chipset": "B450",
+        "form_factor": "mATX",
+        "power": 42
+    },
+    {
+        "id": "asrock_b450m_pro4",
+        "manufacturer": "ASRock",
+        "model": "B450M PRO4",
+        "socket": "AM4",
+        "chipset": "B450",
+        "form_factor": "mATX",
+        "power": 42
+    },
+    {
+        "id": "asus_tuf_x570_plus",
+        "manufacturer": "ASUS",
+        "model": "TUF GAMING X570-PLUS",
+        "socket": "AM4",
+        "chipset": "X570",
+        "form_factor": "ATX",
+        "power": 55
+    },
+    {
+        "id": "msi_b550m_mortar",
+        "manufacturer": "MSI",
+        "model": "MAG B550M MORTAR",
+        "socket": "AM4",
+        "chipset": "B550",
+        "form_factor": "mATX",
+        "power": 48
+    },
+    {
+        "id": "asus_prime_b660m_a_wifi_d4",
+        "manufacturer": "ASUS",
+        "model": "PRIME B660M-A WIFI D4",
+        "socket": "LGA1700",
+        "chipset": "B660",
+        "form_factor": "mATX",
+        "power": 48
+    },
+    {
+        "id": "msi_pro_b660m_a_wifi_ddr4",
+        "manufacturer": "MSI",
+        "model": "PRO B660M-A WIFI DDR4",
+        "socket": "LGA1700",
+        "chipset": "B660",
+        "form_factor": "mATX",
+        "power": 48
+    },
+    {
+        "id": "gigabyte_b660m_ds3h_ddr4",
+        "manufacturer": "GIGABYTE",
+        "model": "B660M DS3H DDR4",
+        "socket": "LGA1700",
+        "chipset": "B660",
+        "form_factor": "mATX",
+        "power": 45
+    },
+    {
+        "id": "asus_prime_h610m_k_d4",
+        "manufacturer": "ASUS",
+        "model": "PRIME H610M-K D4",
+        "socket": "LGA1700",
+        "chipset": "H610",
+        "form_factor": "mATX",
+        "power": 40
+    },
+    {
+        "id": "msi_pro_h610m_g_ddr4",
+        "manufacturer": "MSI",
+        "model": "PRO H610M-G DDR4",
+        "socket": "LGA1700",
+        "chipset": "H610",
+        "form_factor": "mATX",
+        "power": 40
     }
 ]

@@ -352,5 +352,83 @@
         "manufacturer": "Intel",
         "model": "Core i9-9900K",
         "max_power": 95
+    },
+    {
+        "id": "amd_5600",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 5600",
+        "max_power": 76
+    },
+    {
+        "id": "amd_5500",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 5500",
+        "max_power": 76
+    },
+    {
+        "id": "amd_5700g",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5700G",
+        "max_power": 88
+    },
+    {
+        "id": "intel_14500",
+        "manufacturer": "Intel",
+        "model": "Core i5-14500",
+        "max_power": 154
+    },
+    {
+        "id": "intel_12400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-12400F",
+        "max_power": 117
+    },
+    {
+        "id": "intel_10400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-10400F",
+        "max_power": 65
+    },
+    {
+        "id": "intel_9400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-9400F",
+        "max_power": 65
+    },
+    {
+        "id": "intel_8400",
+        "manufacturer": "Intel",
+        "model": "Core i5-8400",
+        "max_power": 65
+    },
+    {
+        "id": "intel_7500",
+        "manufacturer": "Intel",
+        "model": "Core i5-7500",
+        "max_power": 65
+    },
+    {
+        "id": "intel_6500",
+        "manufacturer": "Intel",
+        "model": "Core i5-6500",
+        "max_power": 65
+    },
+    {
+        "id": "intel_4590",
+        "manufacturer": "Intel",
+        "model": "Core i5-4590",
+        "max_power": 84
+    },
+    {
+        "id": "intel_3570",
+        "manufacturer": "Intel",
+        "model": "Core i5-3570",
+        "max_power": 77
+    },
+    {
+        "id": "intel_2500",
+        "manufacturer": "Intel",
+        "model": "Core i5-2500",
+        "max_power": 95
     }
 ]
