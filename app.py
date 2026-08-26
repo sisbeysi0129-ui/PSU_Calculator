@@ -418,12 +418,36 @@ def home():
 
         # -------------------------
         # PSU 권장 용량
+        # 총 소비전력의 여유분과 그래픽카드 전력 등급별
+        # 안전 하한을 함께 적용한다.
         # -------------------------
 
-        minimum_psu = int(
+        calculated_minimum_psu = int(
             math.ceil(
                 recommended_power / 50
             ) * 50
+        )
+
+        if gpu_power >= 450:
+            gpu_psu_floor = 1000
+        elif gpu_power >= 350:
+            gpu_psu_floor = 850
+        elif gpu_power >= 300:
+            gpu_psu_floor = 750
+        elif gpu_power >= 220:
+            gpu_psu_floor = 700
+        elif gpu_power >= 160:
+            gpu_psu_floor = 650
+        elif gpu_power >= 120:
+            gpu_psu_floor = 550
+        elif gpu_power >= 75:
+            gpu_psu_floor = 450
+        else:
+            gpu_psu_floor = 400
+
+        minimum_psu = max(
+            calculated_minimum_psu,
+            gpu_psu_floor
         )
 
         recommended_psu = (
@@ -572,6 +596,9 @@ def home():
 
             "recommended_power":
                 round(recommended_power),
+
+            "gpu_psu_floor":
+                gpu_psu_floor,
 
 
             # -------------------------
