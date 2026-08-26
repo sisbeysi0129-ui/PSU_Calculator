@@ -1064,7 +1064,12 @@
                 form="calculator-form"
             >
 
-                <option value="1">
+                <option
+                    value="1"
+                    {% if request.form.get('ram_count', '2') == '1' %}
+                    selected
+                    {% endif %}
+                >
                     1개
                 </option>
 
@@ -1074,15 +1079,25 @@
                     selected
                     {% endif %}
                 >
-                    2개
+                    2개 (1세트)
                 </option>
 
-                <option value="4">
-                    4개
+                <option
+                    value="4"
+                    {% if request.form.get('ram_count', '2') == '4' %}
+                    selected
+                    {% endif %}
+                >
+                    4개 (2세트 · 풀뱅크)
                 </option>
 
-                <option value="8">
-                    8개
+                <option
+                    value="8"
+                    {% if request.form.get('ram_count', '2') == '8' %}
+                    selected
+                    {% endif %}
+                >
+                    8개 (2세트 · 8슬롯)
                 </option>
 
             </select>
