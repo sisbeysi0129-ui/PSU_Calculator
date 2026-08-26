@@ -430,5 +430,83 @@
         "manufacturer": "Intel",
         "model": "Core i5-2500",
         "max_power": 95
+    },
+    {
+        "id": "amd_7500f",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 7500F",
+        "max_power": 88
+    },
+    {
+        "id": "amd_5700",
+        "manufacturer": "AMD",
+        "model": "Ryzen 7 5700",
+        "max_power": 76
+    },
+    {
+        "id": "amd_5600g",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 5600G",
+        "max_power": 88
+    },
+    {
+        "id": "amd_4600g",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 4600G",
+        "max_power": 65
+    },
+    {
+        "id": "amd_4500",
+        "manufacturer": "AMD",
+        "model": "Ryzen 5 4500",
+        "max_power": 65
+    },
+    {
+        "id": "amd_3300x",
+        "manufacturer": "AMD",
+        "model": "Ryzen 3 3300X",
+        "max_power": 65
+    },
+    {
+        "id": "intel_14400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-14400F",
+        "max_power": 148
+    },
+    {
+        "id": "intel_13400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-13400F",
+        "max_power": 148
+    },
+    {
+        "id": "intel_13100",
+        "manufacturer": "Intel",
+        "model": "Core i3-13100",
+        "max_power": 110
+    },
+    {
+        "id": "intel_12100f",
+        "manufacturer": "Intel",
+        "model": "Core i3-12100F",
+        "max_power": 89
+    },
+    {
+        "id": "intel_11400f",
+        "manufacturer": "Intel",
+        "model": "Core i5-11400F",
+        "max_power": 154
+    },
+    {
+        "id": "intel_10500",
+        "manufacturer": "Intel",
+        "model": "Core i5-10500",
+        "max_power": 65
+    },
+    {
+        "id": "intel_9100f",
+        "manufacturer": "Intel",
+        "model": "Core i3-9100F",
+        "max_power": 65
     }
 ]

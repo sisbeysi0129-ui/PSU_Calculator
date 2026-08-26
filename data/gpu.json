@@ -454,5 +454,89 @@
         "manufacturer": "Intel",
         "model": "Arc A380",
         "max_power": 75
+    },
+    {
+        "id": "nvidia_rtx2070",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce RTX 2070",
+        "max_power": 175
+    },
+    {
+        "id": "nvidia_gtx_1660ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1660 Ti",
+        "max_power": 120
+    },
+    {
+        "id": "nvidia_gtx_1650_super",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1650 SUPER",
+        "max_power": 100
+    },
+    {
+        "id": "nvidia_gtx_1070ti",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1070 Ti",
+        "max_power": 180
+    },
+    {
+        "id": "nvidia_gtx_1060_3gb",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 1060 3GB",
+        "max_power": 120
+    },
+    {
+        "id": "nvidia_gtx_1030",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GT 1030",
+        "max_power": 30
+    },
+    {
+        "id": "nvidia_gtx_780",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 780",
+        "max_power": 250
+    },
+    {
+        "id": "nvidia_gtx_770",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 770",
+        "max_power": 230
+    },
+    {
+        "id": "nvidia_gtx_660",
+        "manufacturer": "NVIDIA",
+        "model": "GeForce GTX 660",
+        "max_power": 140
+    },
+    {
+        "id": "amd_rx480",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 480",
+        "max_power": 150
+    },
+    {
+        "id": "amd_rx470",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 470",
+        "max_power": 120
+    },
+    {
+        "id": "amd_rx560",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 560",
+        "max_power": 75
+    },
+    {
+        "id": "amd_rx550",
+        "manufacturer": "AMD",
+        "model": "Radeon RX 550",
+        "max_power": 50
+    },
+    {
+        "id": "intel_arc_a310",
+        "manufacturer": "Intel",
+        "model": "Arc A310",
+        "max_power": 75
     }
 ]
