@@ -61,5 +61,68 @@
         "model": "P300 4TB",
         "capacity": "4TB",
         "power": 7
+    },
+    {
+        "id": "hdd10",
+        "manufacturer": "Western Digital",
+        "model": "WD Blue 6TB",
+        "capacity": "6TB",
+        "power": 8
+    },
+    {
+        "id": "hdd11",
+        "manufacturer": "Western Digital",
+        "model": "WD Red Plus 4TB",
+        "capacity": "4TB",
+        "power": 6
+    },
+    {
+        "id": "hdd12",
+        "manufacturer": "Western Digital",
+        "model": "WD Red Plus 8TB",
+        "capacity": "8TB",
+        "power": 7
+    },
+    {
+        "id": "hdd13",
+        "manufacturer": "Seagate",
+        "model": "BarraCuda 8TB",
+        "capacity": "8TB",
+        "power": 8
+    },
+    {
+        "id": "hdd14",
+        "manufacturer": "Seagate",
+        "model": "IronWolf 4TB",
+        "capacity": "4TB",
+        "power": 7
+    },
+    {
+        "id": "hdd15",
+        "manufacturer": "Seagate",
+        "model": "IronWolf 8TB",
+        "capacity": "8TB",
+        "power": 8
+    },
+    {
+        "id": "hdd16",
+        "manufacturer": "Toshiba",
+        "model": "P300 6TB",
+        "capacity": "6TB",
+        "power": 8
+    },
+    {
+        "id": "hdd17",
+        "manufacturer": "Toshiba",
+        "model": "N300 4TB",
+        "capacity": "4TB",
+        "power": 7
+    },
+    {
+        "id": "hdd18",
+        "manufacturer": "Toshiba",
+        "model": "N300 8TB",
+        "capacity": "8TB",
+        "power": 8
     }
 ]

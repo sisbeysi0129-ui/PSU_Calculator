@@ -422,5 +422,133 @@
     "capacity": "8GB",
     "speed": "5600MHz",
     "power": 4
+  },
+  {
+    "id": "ram-samsung-ddr4-16gb-3200",
+    "manufacturer": "삼성전자",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-samsung-ddr4-32gb-3200",
+    "manufacturer": "삼성전자",
+    "type": "DDR4",
+    "capacity": "32GB",
+    "speed": "3200MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-samsung-ddr5-16gb-5600",
+    "manufacturer": "삼성전자",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-samsung-ddr5-32gb-5600",
+    "manufacturer": "삼성전자",
+    "type": "DDR5",
+    "capacity": "32GB",
+    "speed": "5600MHz",
+    "power": 5
+  },
+  {
+    "id": "ram-sk-hynix-ddr4-16gb-3200",
+    "manufacturer": "SK하이닉스",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-sk-hynix-ddr5-16gb-5600",
+    "manufacturer": "SK하이닉스",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-kingston-ddr4-16gb-3200",
+    "manufacturer": "킹스톤",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-kingston-ddr5-16gb-5600",
+    "manufacturer": "킹스톤",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "5600MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-corsair-ddr4-16gb-3200",
+    "manufacturer": "커세어",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-corsair-ddr4-32gb-3600",
+    "manufacturer": "커세어",
+    "type": "DDR4",
+    "capacity": "32GB",
+    "speed": "3600MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-corsair-ddr5-16gb-6000",
+    "manufacturer": "커세어",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "6000MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-gskill-ddr4-16gb-3200",
+    "manufacturer": "G.SKILL",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-gskill-ddr4-32gb-3600",
+    "manufacturer": "G.SKILL",
+    "type": "DDR4",
+    "capacity": "32GB",
+    "speed": "3600MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-gskill-ddr5-16gb-6000",
+    "manufacturer": "G.SKILL",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "6000MHz",
+    "power": 4
+  },
+  {
+    "id": "ram-teamgroup-ddr4-16gb-3200",
+    "manufacturer": "TeamGroup",
+    "type": "DDR4",
+    "capacity": "16GB",
+    "speed": "3200MHz",
+    "power": 3
+  },
+  {
+    "id": "ram-teamgroup-ddr5-16gb-6000",
+    "manufacturer": "TeamGroup",
+    "type": "DDR5",
+    "capacity": "16GB",
+    "speed": "6000MHz",
+    "power": 4
   }
 ]

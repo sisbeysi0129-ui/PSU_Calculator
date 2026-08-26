@@ -166,5 +166,165 @@
         "type": "SATA",
         "capacity": "1TB",
         "power": 3
+    },
+    {
+        "id": "nvme13",
+        "manufacturer": "Samsung",
+        "model": "9100 PRO",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 6
+    },
+    {
+        "id": "nvme14",
+        "manufacturer": "Samsung",
+        "model": "990 EVO Plus",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 5
+    },
+    {
+        "id": "nvme15",
+        "manufacturer": "WD",
+        "model": "Black SN770",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme16",
+        "manufacturer": "WD",
+        "model": "Black SN770",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 5
+    },
+    {
+        "id": "nvme17",
+        "manufacturer": "WD",
+        "model": "Blue SN580",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme18",
+        "manufacturer": "Crucial",
+        "model": "P3 Plus",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme19",
+        "manufacturer": "Crucial",
+        "model": "P3 Plus",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 5
+    },
+    {
+        "id": "nvme20",
+        "manufacturer": "Crucial",
+        "model": "P5 Plus",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme21",
+        "manufacturer": "Kingston",
+        "model": "KC3000",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme22",
+        "manufacturer": "Kingston",
+        "model": "KC3000",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme23",
+        "manufacturer": "Kingston",
+        "model": "NV3",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme24",
+        "manufacturer": "Lexar",
+        "model": "NM790",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 5
+    },
+    {
+        "id": "nvme25",
+        "manufacturer": "Lexar",
+        "model": "NM790",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "nvme26",
+        "manufacturer": "Seagate",
+        "model": "FireCuda 530",
+        "type": "NVMe",
+        "capacity": "1TB",
+        "power": 6
+    },
+    {
+        "id": "nvme27",
+        "manufacturer": "Seagate",
+        "model": "FireCuda 530",
+        "type": "NVMe",
+        "capacity": "2TB",
+        "power": 6
+    },
+    {
+        "id": "sata10",
+        "manufacturer": "Samsung",
+        "model": "870 EVO",
+        "type": "SATA",
+        "capacity": "4TB",
+        "power": 4
+    },
+    {
+        "id": "sata11",
+        "manufacturer": "Crucial",
+        "model": "MX500",
+        "type": "SATA",
+        "capacity": "4TB",
+        "power": 4
+    },
+    {
+        "id": "sata12",
+        "manufacturer": "WD",
+        "model": "Blue SA510",
+        "type": "SATA",
+        "capacity": "2TB",
+        "power": 4
+    },
+    {
+        "id": "sata13",
+        "manufacturer": "Kingston",
+        "model": "KC600",
+        "type": "SATA",
+        "capacity": "512GB",
+        "power": 3
+    },
+    {
+        "id": "sata14",
+        "manufacturer": "Kingston",
+        "model": "KC600",
+        "type": "SATA",
+        "capacity": "2TB",
+        "power": 4
     }
 ]
