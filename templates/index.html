@@ -1109,7 +1109,7 @@
         <div class="ssd-manufacturer-filter">
 
             <div class="ssd-manufacturer-head">
-                <span class="ssd-manufacturer-title">제조사 🟢</span>
+                <span class="ssd-manufacturer-title">SSD 제조사 🟢</span>
                 <button
                     type="button"
                     class="ssd-manufacturer-toggle"
@@ -1275,7 +1275,7 @@
 
         <div class="ssd-manufacturer-filter">
             <div class="ssd-manufacturer-head">
-                <span class="ssd-manufacturer-title">제조사</span>
+                <span class="ssd-manufacturer-title">HDD 제조사</span>
             </div>
             <div class="ssd-manufacturer-grid" id="hdd-manufacturer-filter">
                 <label><input type="checkbox" name="hdd-manufacturer-filter" value="Seagate"> <span>Seagate</span></label>
@@ -1483,7 +1483,7 @@
                 </div>
                 <p class="recommendation-note">
                     <span>예상 최대 소비전력:</span> {{ result.total_power }}W
-                    <span>에 25% 여유와 그래픽카드 전력 등급별 안전 하한을 반영한 권장 용량입니다.</span>
+                    <span>에 25% 여유를 반영한 뒤, 업그레이드 여유까지 고려한 권장 용량입니다.</span>
                 </p>
             </div>
             <div class="recommendation-watt">{{ result.recommended_psu }} W</div>
@@ -1642,11 +1642,6 @@
                 <div class="margin-power">
                     25% 여유 적용:
                     {{ result.recommended_power }} W
-                </div>
-
-                <div class="margin-power">
-                    그래픽카드 기준 최소 권장:
-                    {{ result.gpu_psu_floor }} W
                 </div>
 
             </div>
