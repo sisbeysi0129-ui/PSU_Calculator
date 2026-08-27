@@ -315,25 +315,13 @@ def home():
             gpu.get("max_power", 0)
         )
 
-        motherboard_power = float(
-            motherboard.get("power", 0)
-        )
-
-
         # -------------------------
-        # RAM 전력
+        # 플랫폼 기본 전력
+        # 메인보드·RAM은 제조사별 실측 기준이 통일돼 있지 않아
+        # 모델별 값 대신 보수적인 고정값으로 계산한다.
         # -------------------------
 
-        ram_power = 0
-
-        if ram:
-
-            ram_power = (
-                float(
-                    ram.get("power", 0)
-                )
-                * ram_count
-            )
+        platform_power = 55
 
 
         # -------------------------
@@ -398,8 +386,7 @@ def home():
         total_power = (
             cpu_power
             + gpu_power
-            + motherboard_power
-            + ram_power
+            + platform_power
             + nvme_power
             + sata_power
             + hdd_power
@@ -556,11 +543,8 @@ def home():
             "gpu_power":
                 gpu_power,
 
-            "motherboard_power":
-                motherboard_power,
-
-            "ram_power":
-                ram_power,
+            "platform_power":
+                platform_power,
 
             "nvme_power":
                 nvme_power,
