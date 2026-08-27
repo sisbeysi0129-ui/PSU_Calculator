@@ -501,6 +501,63 @@
             line-height: 1.5;
         }
 
+        .psu-product-list {
+            margin-top: 24px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 22px;
+        }
+
+        .psu-product-list h3 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .psu-product-list p {
+            margin: 6px 0 13px;
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .psu-product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .psu-product {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            background: #f8fbff;
+            padding: 13px;
+        }
+
+        .psu-product:hover {
+            border-color: #2563eb;
+        }
+
+        .psu-product-brand {
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .psu-product-model {
+            margin-top: 3px;
+            font-size: 13px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .psu-product-spec {
+            margin-top: 7px;
+            color: #4b5563;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
         @media (max-width: 560px) {
             .recommendation-banner {
                 grid-template-columns: 1fr;
@@ -508,6 +565,10 @@
 
             .recommendation-watt {
                 width: fit-content;
+            }
+
+            .psu-product-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1721,6 +1782,25 @@
             <div class="purchase-tip">
                 구매 전에는 정격 출력, GPU 보조전원 커넥터 수, 80 PLUS 등급, 보증기간도 함께 확인하세요.
             </div>
+
+            {% if result.recommended_psus %}
+            <div class="psu-product-list">
+                <h3>🧾 실제 파워 제품 예시</h3>
+                <p>추천 용량 이상인 제품 예시입니다. 가격·재고·지역별 사양은 구매 전에 다시 확인하세요.</p>
+                <div class="psu-product-grid">
+                    {% for psu in result.recommended_psus %}
+                    <a class="psu-product" href="{{ psu.source_url }}" target="_blank" rel="noopener noreferrer">
+                        <div class="psu-product-brand">{{ psu.brand }}</div>
+                        <div class="psu-product-model">{{ psu.model }}</div>
+                        <div class="psu-product-spec">
+                            정격 {{ psu.watt }}W · {{ psu.efficiency }}<br>
+                            {{ psu.atx }} · {{ psu.modular }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
 
         </div>
 

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "cm_mwe_gold_550_v3",
+    "brand": "Cooler Master",
+    "model": "MWE Gold 550 V3 ATX 3.1",
+    "watt": 550,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.1",
+    "modular": "일반 케이블",
+    "source_url": "https://www.coolermaster.com/en-my/products/mwe-gold-v3-atx-3-1-non-modular-series.html"
+  },
+  {
+    "id": "corsair_rm650e",
+    "brand": "CORSAIR",
+    "model": "RMe RM650e",
+    "watt": 650,
+    "efficiency": "Cybenetics Gold",
+    "atx": "ATX 3.1 · PCIe 5.1",
+    "modular": "풀 모듈러",
+    "source_url": "https://www.corsair.com/ww/en/p/psu/cp-9020302-in/rme-series-rm650e-fully-modular-low-noise-atx-power-supply-in-cp-9020302-in"
+  },
+  {
+    "id": "msi_a650bnl",
+    "brand": "MSI",
+    "model": "MAG A650BNL",
+    "watt": 650,
+    "efficiency": "80 PLUS Bronze",
+    "atx": "ATX",
+    "modular": "일반 케이블",
+    "source_url": "https://kr.msi.com/Power-Supply/MAG-A650BNL/Specification"
+  },
+  {
+    "id": "msi_a750gl",
+    "brand": "MSI",
+    "model": "MAG A750GL PCIE5",
+    "watt": 750,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.0 · PCIe 5.0",
+    "modular": "풀 모듈러",
+    "source_url": "https://kr.msi.com/Power-Supply/MAG-A750GL-PCIE5/Specification"
+  },
+  {
+    "id": "seasonic_focus_gx_750",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-750 ATX 3.0",
+    "watt": 750,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.0 · PCIe 5.0",
+    "modular": "풀 모듈러",
+    "source_url": "https://seasonic.com/atx3-focus-gx/"
+  },
+  {
+    "id": "cm_mwe_gold_750_v3",
+    "brand": "Cooler Master",
+    "model": "MWE Gold 750 V3 ATX 3.1",
+    "watt": 750,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.1 · 12V-2x6",
+    "modular": "풀 모듈러",
+    "source_url": "https://www.coolermaster.com/en-global/products/mwe-gold-750-v3-atx-3-1.html"
+  },
+  {
+    "id": "seasonic_focus_gx_850",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-850 ATX 3.0",
+    "watt": 850,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.0 · PCIe 5.0",
+    "modular": "풀 모듈러",
+    "source_url": "https://seasonic.com/atx3-focus-gx/"
+  },
+  {
+    "id": "cm_mwe_gold_850_v3",
+    "brand": "Cooler Master",
+    "model": "MWE Gold 850 V3 ATX 3.1",
+    "watt": 850,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.1 · 12V-2x6",
+    "modular": "풀 모듈러",
+    "source_url": "https://www.coolermaster.com/en-global/products/mwe-gold-850-v3-atx-3-1.html"
+  },
+  {
+    "id": "seasonic_focus_gx_1000",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX 3.0",
+    "watt": 1000,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.0 · PCIe 5.0",
+    "modular": "풀 모듈러",
+    "source_url": "https://seasonic.com/atx3-focus-gx/"
+  },
+  {
+    "id": "seasonic_vertex_gx_1200",
+    "brand": "Seasonic",
+    "model": "VERTEX GX-1200 ATX 3.1",
+    "watt": 1200,
+    "efficiency": "80 PLUS Gold",
+    "atx": "ATX 3.1 · PCIe 5.1",
+    "modular": "풀 모듈러",
+    "source_url": "https://seasonic.com/vertex-gx/"
+  },
+  {
+    "id": "msi_meg_ai1300p",
+    "brand": "MSI",
+    "model": "MEG Ai1300P PCIE5",
+    "watt": 1300,
+    "efficiency": "80 PLUS Platinum",
+    "atx": "ATX 3.0 · PCIe 5.0",
+    "modular": "풀 모듈러",
+    "source_url": "https://kr.msi.com/Power-Supply/MEG-Ai1300P-PCIE5/Specification"
+  }
+]

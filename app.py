@@ -24,6 +24,7 @@ motherboards = load_data("motherboard.json")
 rams = load_data("ram.json")
 ssds = load_data("ssd.json")
 hdds = load_data("hdd.json")
+psus = load_data("psu.json")
 
 
 # =========================
@@ -436,6 +437,18 @@ def home():
             minimum_psu + 200
         )
 
+        recommended_psus = sorted(
+            (
+                psu for psu in psus
+                if int(psu.get("watt", 0)) >= recommended_psu
+            ),
+            key=lambda psu: (
+                int(psu.get("watt", 0)),
+                psu.get("brand", ""),
+                psu.get("model", "")
+            )
+        )[:3]
+
 
         # =========================
         # 결과
@@ -586,7 +599,10 @@ def home():
                 recommended_psu,
 
             "high_psu":
-                high_psu
+                high_psu,
+
+            "recommended_psus":
+                recommended_psus
         }
 
 
