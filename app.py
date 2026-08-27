@@ -101,17 +101,6 @@ def home():
 
         cpu_id = request.form.get("cpu")
         gpu_id = request.form.get("gpu")
-        motherboard_id = request.form.get("motherboard")
-
-        ram_id = request.form.get("ram")
-
-        try:
-            ram_count = int(
-                request.form.get("ram_count", 0)
-            )
-        except (ValueError, TypeError):
-            ram_count = 0
-
         nvme_id = request.form.get("nvme")
 
         try:
@@ -164,12 +153,6 @@ def home():
         elif not gpu_id:
             error = "GPU를 선택해주세요."
 
-        elif not motherboard_id:
-            error = "메인보드를 선택해주세요."
-
-        elif not ram_id:
-            error = "RAM을 선택해주세요."
-
         elif nvme_count > 0 and not nvme_id:
             error = "NVMe SSD 수량을 선택하려면 모델도 선택해주세요."
 
@@ -211,22 +194,6 @@ def home():
             gpu_id
         )
 
-        motherboard = find_part(
-            motherboards,
-            motherboard_id
-        )
-
-
-        # -------------------------
-        # RAM
-        # -------------------------
-
-        ram = find_part(
-            rams,
-            ram_id
-        )
-
-
         # -------------------------
         # NVMe
         # -------------------------
@@ -261,7 +228,7 @@ def home():
         # 데이터 확인
         # -------------------------
 
-        if not cpu or not gpu or not motherboard:
+        if not cpu or not gpu:
 
             error = "선택한 부품 데이터를 찾을 수 없습니다."
 
@@ -278,30 +245,6 @@ def home():
                 result=None,
                 error=error
             )
-
-
-        required_socket = cpu_socket(cpu)
-        motherboard_socket = str(motherboard.get("socket", "")).upper()
-
-        if required_socket and motherboard_socket != required_socket:
-            error = (
-                f'{cpu.get("model", "CPU")}는 {required_socket} 소켓 메인보드가 필요합니다.'
-            )
-
-            return render_template(
-                "index.html",
-
-                cpus=cpus,
-                gpus=gpus,
-                motherboards=motherboards,
-                rams=rams,
-                ssds=ssds,
-                hdds=hdds,
-
-                result=None,
-                error=error
-            )
-
 
         # =========================
         # 전력 계산
@@ -450,29 +393,6 @@ def home():
             "gpu":
                 f'{gpu.get("manufacturer", "")} '
                 f'{gpu.get("model", "")}',
-
-            "motherboard":
-                f'{motherboard.get("manufacturer", "")} '
-                f'{motherboard.get("model", "")}',
-
-
-            # -------------------------
-            # RAM
-            # -------------------------
-
-            "ram":
-                (
-                    f'{ram.get("manufacturer", "")} '
-                    f'{ram.get("type", "")} '
-                    f'{ram.get("capacity", "")} '
-                    f'{ram.get("speed", "")}'
-                    if ram
-                    else "선택하지 않음"
-                ),
-
-            "ram_count":
-                ram_count,
-
 
             # -------------------------
             # NVMe

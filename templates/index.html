@@ -378,6 +378,21 @@
             white-space: nowrap;
         }
 
+        .platform-power-note {
+            margin: 14px 0 2px;
+            padding: 11px 13px;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            background: #eff6ff;
+            color: #1e40af;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .platform-detail-field {
+            display: none;
+        }
+
         .purchase-tip {
             margin-top: 14px;
             padding: 12px 14px;
@@ -1009,9 +1024,13 @@
         </div>
 
 
+        <div class="platform-power-note">
+            메인보드와 RAM 전력은 일반적인 시스템 기본 전력에 포함해 자동으로 계산합니다.
+        </div>
+
         <!-- 메인보드 -->
 
-        <div class="form-row">
+        <div class="form-row platform-detail-field">
 
             <label for="motherboard-search">
                 메인보드
@@ -1084,7 +1103,7 @@
          RAM
     ========================= -->
 
-    <div class="section">
+    <div class="section platform-detail-field">
 
         <div class="section-title">
             🧠 RAM
@@ -1577,21 +1596,6 @@
             </div>
 
             <div class="selected-item">
-                <div class="selected-label">메인보드</div>
-                <div class="selected-value">
-                    {{ result.motherboard }}
-                </div>
-            </div>
-
-            <div class="selected-item">
-                <div class="selected-label">RAM</div>
-                <div class="selected-value">
-                    {{ result.ram }}
-                    × {{ result.ram_count }}
-                </div>
-            </div>
-
-            <div class="selected-item">
                 <div class="selected-label">NVMe SSD</div>
                 <div class="selected-value">
                     {{ result.nvme }}
@@ -1648,7 +1652,7 @@
                 </div>
 
                 <div class="power-row">
-                    <span>플랫폼 기본 전력 (메인보드·RAM 추정)</span>
+                    <span>플랫폼 기본 전력 (시스템 기본값)</span>
                     <span class="power-value">
                         {{ result.platform_power }} W
                     </span>
@@ -3614,8 +3618,6 @@ function copyConfiguration() {
         "[PSU Calculator 구성]",
         `CPU: ${selectedText("cpu-selected", "선택하지 않음")}`,
         `GPU: ${selectedText("gpu-selected", "선택하지 않음")}`,
-        `메인보드: ${selectedText("motherboard-selected", "선택하지 않음")}`,
-        `RAM: ${optionText("ram")} × ${optionText("ram_count")}`,
         `NVMe SSD: ${optionText("nvme")} × ${optionText("nvme_count")}`,
         `SATA SSD: ${optionText("sata_ssd")} × ${optionText("sata_ssd_count")}`,
         `HDD: ${optionText("hdd")} × ${optionText("hdd_count")}`,
