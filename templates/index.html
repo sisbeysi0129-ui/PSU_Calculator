@@ -1026,7 +1026,16 @@
 
 
         <div class="platform-power-note">
-            메인보드와 RAM 전력은 일반적인 시스템 기본 전력에 포함해 자동으로 계산합니다.
+            메인보드는 기본 전력으로, RAM은 선택한 개수를 반영해 자동으로 계산합니다.
+        </div>
+
+        <div class="form-row">
+            <label for="ram-count">RAM 개수</label>
+            <select name="ram_count" id="ram-count" form="calculator-form">
+                <option value="1" {% if request.form.get('ram_count', '2') == '1' %}selected{% endif %}>1개</option>
+                <option value="2" {% if request.form.get('ram_count', '2') == '2' %}selected{% endif %}>2개 (1세트)</option>
+                <option value="4" {% if request.form.get('ram_count', '2') == '4' %}selected{% endif %}>4개 (2세트 · 풀뱅크)</option>
+            </select>
         </div>
 
         <!-- 메인보드 -->
@@ -1141,8 +1150,7 @@
             </select>
 
             <select
-                name="ram_count"
-                form="calculator-form"
+                aria-hidden="true"
             >
 
                 <option
@@ -1597,6 +1605,11 @@
             </div>
 
             <div class="selected-item">
+                <div class="selected-label">RAM</div>
+                <div class="selected-value">{{ result.ram_count }}개</div>
+            </div>
+
+            <div class="selected-item">
                 <div class="selected-label">NVMe SSD</div>
                 <div class="selected-value">
                     {{ result.nvme }}
@@ -1653,7 +1666,7 @@
                 </div>
 
                 <div class="power-row">
-                    <span>플랫폼 기본 전력 (시스템 기본값)</span>
+                    <span>플랫폼 기본 전력 (메인보드·RAM 포함)</span>
                     <span class="power-value">
                         {{ result.platform_power }} W
                     </span>
@@ -3619,6 +3632,7 @@ function copyConfiguration() {
         "[PSU Calculator 구성]",
         `CPU: ${selectedText("cpu-selected", "선택하지 않음")}`,
         `GPU: ${selectedText("gpu-selected", "선택하지 않음")}`,
+        `RAM: ${optionText("ram_count")}`,
         `NVMe SSD: ${optionText("nvme")} × ${optionText("nvme_count")}`,
         `SATA SSD: ${optionText("sata_ssd")} × ${optionText("sata_ssd_count")}`,
         `HDD: ${optionText("hdd")} × ${optionText("hdd_count")}`,

@@ -101,6 +101,15 @@ def home():
 
         cpu_id = request.form.get("cpu")
         gpu_id = request.form.get("gpu")
+
+        try:
+            ram_count = int(request.form.get("ram_count", 2))
+        except (ValueError, TypeError):
+            ram_count = 2
+
+        if ram_count not in (1, 2, 4):
+            ram_count = 2
+
         nvme_id = request.form.get("nvme")
 
         try:
@@ -260,11 +269,10 @@ def home():
 
         # -------------------------
         # 플랫폼 기본 전력
-        # 메인보드·RAM은 제조사별 실측 기준이 통일돼 있지 않아
-        # 모델별 값 대신 보수적인 고정값으로 계산한다.
+        # 메인보드는 일반적인 기본값으로, RAM은 개수만 반영해 계산한다.
         # -------------------------
 
-        platform_power = 55
+        platform_power = 45 + (ram_count * 5)
 
 
         # -------------------------
@@ -393,6 +401,8 @@ def home():
             "gpu":
                 f'{gpu.get("manufacturer", "")} '
                 f'{gpu.get("model", "")}',
+
+            "ram_count": ram_count,
 
             # -------------------------
             # NVMe
