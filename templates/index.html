@@ -394,6 +394,29 @@
             display: none;
         }
 
+        .ssd-manufacturer-filter.ssd-model-fields,
+        .quantity-row.ssd-model-fields {
+            display: none;
+        }
+
+        .storage-count-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .storage-count-field label {
+            display: block;
+            margin-bottom: 6px;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .storage-count-field select {
+            width: 100%;
+        }
+
         .purchase-tip {
             margin-top: 14px;
             padding: 12px 14px;
@@ -1201,7 +1224,7 @@
              SSD 제조사
         ========================= -->
 
-        <div class="ssd-manufacturer-filter">
+        <div class="ssd-manufacturer-filter ssd-model-fields">
 
             <div class="ssd-manufacturer-head">
                 <span class="ssd-manufacturer-title">SSD 제조사 🟢</span>
@@ -1245,7 +1268,7 @@
         <!-- NVMe -->
 
         <div
-            class="quantity-row"
+            class="quantity-row ssd-model-fields"
             style="margin-bottom:14px;"
         >
 
@@ -1289,8 +1312,7 @@
 
 
             <select
-                name="nvme_count"
-                form="calculator-form"
+                aria-hidden="true"
             >
 
                 <option value="0">0개</option>
@@ -1307,7 +1329,7 @@
         <!-- SATA SSD -->
 
         <div
-            class="quantity-row"
+            class="quantity-row ssd-model-fields"
             style="margin-bottom:14px;"
         >
 
@@ -1351,8 +1373,7 @@
 
 
             <select
-                name="sata_ssd_count"
-                form="calculator-form"
+                aria-hidden="true"
             >
 
                 <option value="0">0개</option>
@@ -1366,7 +1387,30 @@
         </div>
 
 
-        <!-- HDD -->
+        <!-- SSD 개수 -->
+
+        <div class="storage-count-grid">
+            <div class="storage-count-field">
+                <label for="nvme-count">NVMe SSD 개수 · 개당 6W</label>
+                <select name="nvme_count" id="nvme-count" form="calculator-form">
+                    <option value="0" {% if request.form.get('nvme_count', '0') == '0' %}selected{% endif %}>0개</option>
+                    <option value="1" {% if request.form.get('nvme_count') == '1' %}selected{% endif %}>1개</option>
+                    <option value="2" {% if request.form.get('nvme_count') == '2' %}selected{% endif %}>2개</option>
+                    <option value="3" {% if request.form.get('nvme_count') == '3' %}selected{% endif %}>3개</option>
+                    <option value="4" {% if request.form.get('nvme_count') == '4' %}selected{% endif %}>4개</option>
+                </select>
+            </div>
+            <div class="storage-count-field">
+                <label for="sata-ssd-count">SATA SSD 개수 · 개당 4W</label>
+                <select name="sata_ssd_count" id="sata-ssd-count" form="calculator-form">
+                    <option value="0" {% if request.form.get('sata_ssd_count', '0') == '0' %}selected{% endif %}>0개</option>
+                    <option value="1" {% if request.form.get('sata_ssd_count') == '1' %}selected{% endif %}>1개</option>
+                    <option value="2" {% if request.form.get('sata_ssd_count') == '2' %}selected{% endif %}>2개</option>
+                    <option value="3" {% if request.form.get('sata_ssd_count') == '3' %}selected{% endif %}>3개</option>
+                    <option value="4" {% if request.form.get('sata_ssd_count') == '4' %}selected{% endif %}>4개</option>
+                </select>
+            </div>
+        </div>
 
         <div class="ssd-manufacturer-filter">
             <div class="ssd-manufacturer-head">
@@ -1612,16 +1656,14 @@
             <div class="selected-item">
                 <div class="selected-label">NVMe SSD</div>
                 <div class="selected-value">
-                    {{ result.nvme }}
-                    × {{ result.nvme_count }}
+                    {{ result.nvme_count }}개 · 일반 전력값 반영
                 </div>
             </div>
 
             <div class="selected-item">
                 <div class="selected-label">SATA SSD</div>
                 <div class="selected-value">
-                    {{ result.sata_ssd }}
-                    × {{ result.sata_count }}
+                    {{ result.sata_count }}개 · 일반 전력값 반영
                 </div>
             </div>
 
@@ -3633,8 +3675,8 @@ function copyConfiguration() {
         `CPU: ${selectedText("cpu-selected", "선택하지 않음")}`,
         `GPU: ${selectedText("gpu-selected", "선택하지 않음")}`,
         `RAM: ${optionText("ram_count")}`,
-        `NVMe SSD: ${optionText("nvme")} × ${optionText("nvme_count")}`,
-        `SATA SSD: ${optionText("sata_ssd")} × ${optionText("sata_ssd_count")}`,
+        `NVMe SSD: ${optionText("nvme_count")}`,
+        `SATA SSD: ${optionText("sata_ssd_count")}`,
         `HDD: ${optionText("hdd")} × ${optionText("hdd_count")}`,
         `CPU 쿨러: ${optionText("cooler")}`,
         `시스템 팬: ${optionText("fans")}`

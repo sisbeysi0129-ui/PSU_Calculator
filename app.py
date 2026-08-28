@@ -110,16 +110,12 @@ def home():
         if ram_count not in (1, 2, 4):
             ram_count = 2
 
-        nvme_id = request.form.get("nvme")
-
         try:
             nvme_count = int(
                 request.form.get("nvme_count", 0)
             )
         except (ValueError, TypeError):
             nvme_count = 0
-
-        sata_id = request.form.get("sata_ssd")
 
         try:
             sata_count = int(
@@ -162,12 +158,6 @@ def home():
         elif not gpu_id:
             error = "GPU를 선택해주세요."
 
-        elif nvme_count > 0 and not nvme_id:
-            error = "NVMe SSD 수량을 선택하려면 모델도 선택해주세요."
-
-        elif sata_count > 0 and not sata_id:
-            error = "SATA SSD 수량을 선택하려면 모델도 선택해주세요."
-
         elif hdd_count > 0 and not hdd_id:
             error = "HDD 수량을 선택하려면 모델도 선택해주세요."
 
@@ -202,26 +192,6 @@ def home():
             gpus,
             gpu_id
         )
-
-        # -------------------------
-        # NVMe
-        # -------------------------
-
-        nvme = find_part(
-            ssds,
-            nvme_id
-        )
-
-
-        # -------------------------
-        # SATA SSD
-        # -------------------------
-
-        sata_ssd = find_part(
-            ssds,
-            sata_id
-        )
-
 
         # -------------------------
         # HDD
@@ -279,32 +249,14 @@ def home():
         # NVMe 전력
         # -------------------------
 
-        nvme_power = 0
-
-        if nvme:
-
-            nvme_power = (
-                float(
-                    nvme.get("power", 0)
-                )
-                * nvme_count
-            )
+        nvme_power = nvme_count * 6
 
 
         # -------------------------
         # SATA SSD 전력
         # -------------------------
 
-        sata_power = 0
-
-        if sata_ssd:
-
-            sata_power = (
-                float(
-                    sata_ssd.get("power", 0)
-                )
-                * sata_count
-            )
+        sata_power = sata_count * 4
 
 
         # -------------------------
@@ -408,15 +360,6 @@ def home():
             # NVMe
             # -------------------------
 
-            "nvme":
-                (
-                    f'{nvme.get("manufacturer", "")} '
-                    f'{nvme.get("model", "")} '
-                    f'{nvme.get("capacity", "")}'
-                    if nvme
-                    else "선택하지 않음"
-                ),
-
             "nvme_count":
                 nvme_count,
 
@@ -424,15 +367,6 @@ def home():
             # -------------------------
             # SATA SSD
             # -------------------------
-
-            "sata_ssd":
-                (
-                    f'{sata_ssd.get("manufacturer", "")} '
-                    f'{sata_ssd.get("model", "")} '
-                    f'{sata_ssd.get("capacity", "")}'
-                    if sata_ssd
-                    else "선택하지 않음"
-                ),
 
             "sata_count":
                 sata_count,
